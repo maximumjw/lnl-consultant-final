@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             background: url('sky.jpeg') no-repeat center center fixed;
             background-size: cover;
-            color: #2c3e50;
+            color: white; /* 모든 텍스트 색상을 하얀색으로 설정 */
             margin: 0;
             padding: 0;
             display: flex;
@@ -21,7 +21,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: #3498db;
+            background-color: #3498db; /* 추천 취침 시간 글자색과 동일 */
             color: white;
             padding: 10px 15px;
             border-radius: 5px;
@@ -37,7 +37,7 @@
         }
         .container {
             text-align: center;
-            background: rgba(150, 150, 150, 0.9); /* 중간 정도의 어두운 회색 */
+            background: rgba(150, 150, 150, 0.9);
             padding: 30px;
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -47,12 +47,12 @@
         h1 {
             font-size: 2rem;
             margin-bottom: 15px;
-            color: #ffffff;
+            color: white;
         }
         p {
             font-size: 1rem;
             margin-bottom: 20px;
-            color: #dcdde1;
+            color: white;
         }
         input, button {
             font-size: 1rem;
@@ -69,7 +69,7 @@
             box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
         }
         button {
-            background-color: #3498db;
+            background-color: #3498db; /* 추천 취침 시간 글자색 */
             color: white;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
@@ -86,7 +86,7 @@
         li {
             margin: 5px 0;
             font-size: 1.2rem;
-            color: #3498db;
+            color: white; /* 추천 취침 시간 글자색 유지 */
         }
         .button-group {
             display: flex;
@@ -99,7 +99,7 @@
         .footer {
             font-size: 0.9rem;
             margin-top: 20px;
-            color: #95a5a6;
+            color: white;
         }
     </style>
 </head>
@@ -122,7 +122,47 @@
         <p class="footer">* 최소 6시간 수면 또는 최적의 REM 수면을 추천합니다.</p>
     </div>
     <script>
-        // JavaScript 로직은 변경하지 않음
+        const calculateSleepTimes = (minimumHours) => {
+            const wakeTimeInput = document.getElementById('wakeTime').value;
+            const fallAsleepTimeInput = parseInt(document.getElementById('fallAsleepTime').value, 10);
+
+            if (!wakeTimeInput || isNaN(fallAsleepTimeInput)) {
+                alert('기상 시간과 잠드는 데 걸리는 시간을 모두 입력해주세요.');
+                return;
+            }
+
+            const wakeTime = new Date(`1970-01-01T${wakeTimeInput}:00`);
+            const sleepTimesList = document.getElementById('sleepTimes');
+            sleepTimesList.innerHTML = '';
+
+            const REM_CYCLE = 90 * 60 * 1000;
+            const FALL_ASLEEP_TIME = fallAsleepTimeInput * 60 * 1000;
+            const MIN_SLEEP_TIME = minimumHours * 60 * 60 * 1000;
+            const MAX_CYCLES = minimumHours === 0 ? 4 : 7;
+
+            for (let cycles = 1; cycles <= MAX_CYCLES; cycles++) {
+                const sleepTime = new Date(wakeTime - REM_CYCLE * cycles - FALL_ASLEEP_TIME);
+                const sleepDuration = wakeTime - sleepTime;
+
+                if (minimumHours === 0 || sleepDuration >= MIN_SLEEP_TIME) {
+                    const formattedTime = sleepTime.toTimeString().slice(0, 5);
+                    const listItem = document.createElement('li');
+                    listItem.textContent = formattedTime;
+                    sleepTimesList.appendChild(listItem);
+                }
+            }
+
+            if (sleepTimesList.innerHTML === '') {
+                const noOption = document.createElement('li');
+                noOption.textContent = minimumHours === 0
+                    ? '최적의 수면 시간을 계산할 수 없습니다.'
+                    : '6시간 이상 수면 가능한 시간이 없습니다.';
+                sleepTimesList.appendChild(noOption);
+            }
+        };
+
+        document.getElementById('calculateMin6').addEventListener('click', () => calculateSleepTimes(6));
+        document.getElementById('calculateOptimized').addEventListener('click', () => calculateSleepTimes(0));
     </script>
 </body>
 </html>
