@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수면 패턴 컨설팅</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9fbfd;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+        input, button {
+            font-size: 1rem;
+            margin: 10px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #dcdde1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            font-size: 1.2rem;
+            color: #3498db;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .button-group button {
+            width: 48%;
+        }
+        .footer {
+            font-size: 0.9rem;
+            margin-top: 20px;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+    <!-- 메인으로 돌아가기 버튼 -->
+    <a href="main.html" class="back-button">메인으로 돌아가기</a>
+    
+    <div class="container">
+        <h1>수면 패턴 컨설팅</h1>
+        <p>기상 시간과 잠드는 데 걸리는 시간을 입력하세요:</p>
+        <label for="wakeTime">기상 시간 (HH:MM):</label>
+        <input type="time" id="wakeTime" required>
+        <label for="fallAsleepTime">잠드는 데 걸리는 시간 (분):</label>
+        <input type="number" id="fallAsleepTime" min="0" placeholder="예: 14">
+        <div class="button-group">
+            <button id="calculateMin6">6시간 이상 수면</button>
+            <button id="calculateOptimized">수면시간 최소화</button>
+        </div>
+        <h2>추천 취침 시간:</h2>
+        <ul id="sleepTimes"></ul>
+        <p class="footer">* 최소 6시간 수면 또는 최적의 REM 수면을 추천합니다.</p>
+    </div>
+    <script>
+        const calculateSleepTimes = (minimumHours) => {
+            const wakeTimeInput = document.getElementById('wakeTime').value;
+            const fallAsleepTimeInput = parseInt(document.getElementById('fallAsleepTime').value, 10);
+
+            if (!wakeTimeInput || isNaN(fallAsleepTimeInput)) {
+                alert('기상 시간과 잠드는 데 걸리는 시간을 모두 입력해주세요.');
+                return;
+            }
+
+            const wakeTime = new Date(`1970-01-01T${wakeTimeInput}:00`);
+            const sleepTimesList = document.getElementById('sleepTimes');
+            sleepTimesList.innerHTML = '';
+
+            // REM 수면 주기 (90분)
+            const REM_CYCLE = 90 * 60 * 1000; // 90분을 밀리초로 변환
+            const FALL_ASLEEP_TIME = fallAsleepTimeInput * 60 * 1000; // 사용자 입력 값 (분 → 밀리초)
+            const MIN_SLEEP_TIME = minimumHours * 60 * 60 * 1000; // 최소 수면 시간 → 밀리초
+            const MAX_CYCLES = minimumHours === 0 ? 4 : 7; // 최적의 수면일 경우 4개만 표시
+
+            for (let cycles = 1; cycles <= MAX_CYCLES; cycles++) {
+                const sleepTime = new Date(wakeTime - REM_CYCLE * cycles - FALL_ASLEEP_TIME);
+                const sleepDuration = wakeTime - sleepTime;
+
+                if (minimumHours === 0 || sleepDuration >= MIN_SLEEP_TIME) {
+                    const formattedTime = sleepTime.toTimeString().slice(0, 5); // HH:MM 형식
+                    const listItem = document.createElement('li');
+                    listItem.textContent = formattedTime;
+                    sleepTimesList.appendChild(listItem);
+                }
+            }
+
+            if (sleepTimesList.innerHTML === '') {
+                const noOption = document.createElement('li');
+                noOption.textContent = minimumHours === 0
+                    ? '최적의 수면 시간을 계산할 수 없습니다.'
+                    : '6시간 이상 수면 가능한 시간이 없습니다.';
+                sleepTimesList.appendChild(noOption);
+            }
+        };
+
+        document.getElementById('calculateMin6').addEventListener('click', () => calculateSleepTimes(6));
+        document.getElementById('calculateOptimized').addEventListener('click', () => calculateSleepTimes(0));
+    </script>
+</body>
+</html>
