@@ -101,9 +101,9 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">메인으로 돌아가기</a>
+    <a href="main.html" class="back-button">메인으로 돌아가기</a>
     <div class="container">
-        <img src="https://maximumjw.github.io/lnl-consultant-final/muscle.jpg" alt="근육 지도" class="muscle-image">
+        <img src="muscle.JPG" alt="근육 지도" class="muscle-image">
         <div class="hotspot shoulder" style="top: 23%; left: 28%;"></div>
         <div class="hotspot biceps" style="top: 30.7%; left: 26.8%;"></div>
         <div class="hotspot triceps" style="top: 29.7%; left: 75.1%;"></div>
@@ -122,75 +122,73 @@
         const descriptionBox = document.getElementById('descriptionBox');
 
         const descriptions = {
-            back: 
+            back: `
                 <h2>등</h2>
                 <p>1. 풀업: 광배근, 승모근, 이두근 강화. 초보자는 밴드 보조 풀업으로 시작하세요.</p>
                 <p>2. 바벨 로우: 상체를 숙이고 바를 몸쪽으로 당겨 등 근육 강화.</p>
                 <p>3. 랫 풀다운: 케이블 머신으로 다양한 자극을 줄 수 있는 운동.</p>
                 <p>4. 티바로우: 광배근, 승모근, 대원근을 자극합니다.</p>
-            ,
-            triceps: 
+            `,
+            triceps: `
                 <h2>삼두근</h2>
                 <p>1. 클로즈 그립 벤치프레스: 가슴과 삼두근 강화.</p>
                 <p>2. 라잉 트라이셉스 익스텐션: 삼두근에 집중된 운동.</p>
                 <p>3. 케이블 푸쉬 다운: 케이블 머신을 이용한 삼두 운동.</p>
                 <p>4. 딥스: 평행봉을 이용한 체중 운동.</p>
-            ,
-            hamstrings: 
+            `,
+            hamstrings: `
                 <h2>햄스트링</h2>
                 <p>1. 루마니안 데드리프트: 햄스트링과 둔근 강화.</p>
                 <p>2. 레그 컬: 무릎을 구부려 햄스트링 발달.</p>
                 <p>3. 힙 쓰러스트: 둔근과 햄스트링에 강한 자극.</p>
-            ,
-            calves: 
+            `,
+            calves: `
                 <h2>종아리</h2>
                 <p>1. 스탠딩 카프 레이즈: 체중을 활용한 종아리 운동.</p>
                 <p>2. 시티드 카프 레이즈: 앉아서 수행하는 종아리 운동.</p>
-            ,
-            chest: 
+            `,
+            chest: `
                 <h2>가슴</h2>
                 <p>1. 푸시업: 가슴뿐만 아니라 어깨와 삼두근도 발달.</p>
                 <p>2. 벤치 프레스: 대흉근 강화.</p>
                 <p>3. 덤벨 플라이: 가슴 근육을 스트레칭하며 발달.</p>
                 <p>4. 인클라인 벤치 프레스: 가슴 윗부분 발달.</p>
-            ,
-            biceps: 
+            `,
+            biceps: `
                 <h2>이두근</h2>
                 <p>1. 바벨 컬: 팔꿈치를 고정하고 바벨을 들어 올림.</p>
                 <p>2. 덤벨 컬: 각 손에 덤벨로 비대칭 방지 운동.</p>
                 <p>3. 프리쳐 컬: 이두근을 집중적으로 자극.</p>
-            ,
-            shoulder: 
+            `,
+            shoulder: `
                 <h2>어깨</h2>
                 <p>1. 오버헤드 프레스: 어깨 근육 고르게 발달.</p>
                 <p>2. 덤벨 숄더 프레스: 덤벨 사용 운동.</p>
                 <p>3. 리어 델트 플라이: 후면 어깨 강화.</p>
-            ,
-            quads: 
+            `,
+            quads: `
                 <h2>대퇴사두근</h2>
                 <p>1. 스쿼트: 하체와 대퇴사두근 강화.</p>
                 <p>2. 레그 프레스: 머신에서 발판을 밀어 대퇴사두근 강화.</p>
-            
+            `
         };
 
         hotspots.forEach(hotspot => {
             const part = hotspot.classList[1];
             hotspot.addEventListener('mouseenter', () => {
-                descriptionBox.innerHTML = descriptions[part] || 
+                descriptionBox.innerHTML = descriptions[part] || `
                     <h2>근육 부위를 선택하세요</h2>
                     <p>해당 부위에 대한 정보가 없습니다.</p>
-                ;
+                `;
             });
 
             hotspot.addEventListener('mouseleave', () => {
-                descriptionBox.innerHTML = 
+                descriptionBox.innerHTML = `
                     <h2>근육 부위를 선택하세요</h2>
                     <p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>
-                ;
+                `;
             });
         });
     </script>
 </body>
 </html>
-
-이 코드는 내가 만든 홈페이지야. 이 홈페이지의 배경으로 위 사진을 넣어줘
