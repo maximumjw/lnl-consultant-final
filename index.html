@@ -6,14 +6,10 @@
     <title>Well-Being Consulting | Seoul National University LnL</title>
     <style>
         body {
-          font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-image:  background-image: url(C:\Users\hoon0\OneDrive\사진\바탕 화면\20221114134744466139.jpg); /* 이미지 경로 */
-            background-size: contain; /* 화면 크기에 맞게 이미지 크기 조정 */
-            background-position: right top; /* 이미지가 화면 중앙에 오도록 설정 */
-            background-repeat: no-repeat; /* 이미지 반복 방지 */
-
+            background-color: #fff;
             color: #333;
             line-height: 1.6;
         }
@@ -58,27 +54,72 @@
             padding: 2rem;
             text-align: center;
         }
+        .main-content-1 {
+            height: 400vh;
+            position: relative;
+            background-color: #fff;
+        }
+        .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff; /* 배경을 흰색으로 변경 */
+        }
+        .sticky-title {
+            position: absolute;
+            top: 20px;
+            font-size: 1.5rem; /* 글자 크기 조정 */
+            font-weight: bold;
+            color: #333;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        .card-frame {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .card-frame.visible {
+            opacity: 1;
+        }
+        .card {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
         .activities {
-            display: flex; 
-            gap: 20px; 
+            display: flex;
+            gap: 20px;
             justify-content: center;
             margin: 0 auto;
-            width: 80%; 
+            width: 80%;
         }
         .activity-card {
-            flex: 1; 
-            max-width: 300px; 
+            flex: 1;
+            max-width: 300px;
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 1rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center; 
-        }
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
         }
         .activity-card h3 {
             color: #00BFA5;
@@ -98,12 +139,9 @@
             border-radius: 4px;
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .activity-card a:hover {
             background-color: #00897B;
-            transform: translateY(-2px);
         }
         footer {
             background-color: #333;
@@ -112,40 +150,61 @@
             padding: 1rem;
             font-size: 0.85rem;
         }
-        @media screen and (max-width: 900px) {
-            .activities {
-                flex-direction: column;
-                align-items: center; 
-            }
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo-container">
             <a href="https://www.snu.ac.kr/index.html">
-                <img src="snuimg.png" alt="Seoul National University Logo", width="100" height="100">
+                <img src="snuimg.png" alt="Seoul National University Logo">
             </a>
         </div>
         <div class="title">Well-Being Consulting</div>
         <div class="right-logo-container">
             <a href="https://lnl.snu.ac.kr/">
-                <img src="lnl_logo.png" alt="LnL Logo", width="100" height="100">
+                <img src="lnl_logo.png" alt="LnL Logo">
             </a>
         </div>
     </header>
-</body>
     <nav>
         <a href="#about">소개</a>
         <a href="#activities">활동</a>
-        <a href="#activities">서비스</a>
+        <a href="#services">서비스</a>
         <a href="#contact">문의</a>
     </nav>
     <section id="about">
         <h2>Welcome to our Well Being Consulting</h2>
         <p>수면, 식습관, 운동이라는 세 가지 축을 중심으로 웰빙을 연구하고 실천합니다.</p>
     </section>
-    <section id="activities">
+    <!-- Scroll Animation Section -->
+    <section class="main-content-1">
+        <div class="sticky">
+            <div class="sticky-title">Our Activities</div>
+            <div class="card-frame visible">
+                <div class="card">
+                    <img src="card1.jpg" alt="Image 1">
+                </div>
+                <div class="card">
+                    <img src="card2.jpg" alt="Image 2">
+                </div>
+                <div class="card">
+                    <img src="card3.jpg" alt="Image 3">
+                </div>
+            </div>
+            <div class="card-frame">
+                <div class="card">
+                    <img src="card4.jpg" alt="Image 4">
+                </div>
+                <div class="card">
+                    <img src="card5.jpg" alt="Image 5">
+                </div>
+                <div class="card">
+                    <img src="card6.jpg" alt="Image 6">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
         <h2>Our Services</h2>
         <div class="activities">
             <div class="activity-card">
@@ -160,7 +219,7 @@
             </div>
             <div class="activity-card">
                 <h3>Exercising Habit Improvement</h3>
-                <p>부위별 운동 추천 및 운동습관 최적화 </p>
+                <p>부위별 운동 추천 및 운동습관 최적화</p>
                 <a href="muscle consultant.html">더 알아보기</a>
             </div>
         </div>
@@ -168,5 +227,63 @@
     <footer>
         <p>&copy;2024 Well Being Consulting 학생자율세미나 | 서울대학교 LnL 시범사업 운영단</p>
     </footer>
+    <script>
+        class CardGroupScroll {
+            constructor(wrapper, sticky) {
+                this.wrapper = wrapper;
+                this.sticky = sticky;
+                this.groups = sticky.querySelectorAll('.card-frame');
+                this.start = 0;
+                this.end = 0;
+                this.step = 0;
+            }
+
+            init() {
+                this.start = this.wrapper.offsetTop;
+                this.end = this.wrapper.offsetTop + this.wrapper.offsetHeight - innerHeight;
+                this.step = (this.end - this.start) / this.groups.length;
+
+                this.groups.forEach((group, i) => {
+                    if (i === 0) {
+                        group.classList.add('visible');
+                    } else {
+                        group.classList.remove('visible');
+                    }
+                });
+            }
+
+            animate() {
+                this.groups.forEach((group, i) => {
+                    const s = this.start + this.step * i;
+                    const e = s + this.step;
+
+                    if (scrollY < this.start) {
+                        this.groups[0].classList.add('visible');
+                        group.classList.remove('visible');
+                    } else if (scrollY >= this.end) {
+                        this.groups[this.groups.length - 1].classList.add('visible');
+                        group.classList.remove('visible');
+                    } else if (scrollY >= s && scrollY < e) {
+                        group.classList.add('visible');
+                    } else {
+                        group.classList.remove('visible');
+                    }
+                });
+            }
+        }
+
+        const mainContent1 = document.querySelector('.main-content-1');
+        const sticky = document.querySelector('.sticky');
+        const cardGroupScroll = new CardGroupScroll(mainContent1, sticky);
+        cardGroupScroll.init();
+
+        window.addEventListener('scroll', () => {
+            cardGroupScroll.animate();
+        });
+
+        window.addEventListener('resize', () => {
+            cardGroupScroll.init();
+        });
+    </script>
 </body>
 </html>
