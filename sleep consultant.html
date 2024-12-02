@@ -7,158 +7,14 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: url('sky.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            height: 100vh;
-        }
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #1f5b84;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .back-button:hover {
-            background-color: #1a4a6f;
-            transform: translateY(-2px);
-        }
-        .container {
-            text-align: center;
-            background: rgba(150, 150, 150, 0.9);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-        p {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-        input, button {
-            font-size: 1rem;
-            margin: 10px 0;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid #dcdde1;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        input:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
-        }
-        button {
-            background-color: #1f5b84;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: none;
-        }
-        button:hover {
-            background-color: #1a4a6f;
-            transform: translateY(-2px);
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 5px 0;
-            font-size: 1.2rem;
-            color: white;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .button-group button {
-            width: 48%;
-        }
-        .footer {
-            font-size: 0.9rem;
-            margin-top: 20px;
-            color: white;
-        }
-        .scrollable-container {
-            text-align: center;
-            background: rgba(100, 100, 100, 0.9);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            max-width: 400px;
-            width: 100%;
-            overflow-y: auto;
-            max-height: 400px; /* 최대 높이 설정 */
-        }
-        .scrollable-container p {
-            font-size: 1rem;
-            color: white;
-            margin: 10px 0;
-        }
-         /* 기존 버튼 스타일 */
-    button {
-        background-color: #1f5b84;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        border: none;
-    }
-    button:hover {
-        background-color: #1a4a6f;
-        transform: translateY(-2px);
-    }
-
-    /* 수면시간 최소화 버튼만 빨간색으로 변경 */
-    #calculateOptimized {
-        background-color: #e74c3c; /* 빨간색 */
-    }
-
-    #calculateOptimized:hover {
-        background-color: #c0392b; /* 더 어두운 빨간색 */
-    }
-    </style>
-</head>
-<body>
-    <a href="index.html" class="back-button">메인으로 돌아가기</a>
-    
-   <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수면 패턴 컨설팅</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #f4f4f9;
+            background: url('sky.jpeg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .container, .scrollable-container {
@@ -166,12 +22,14 @@
             padding: 30px;
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            max-width: 450px; /* 왼쪽 컨테이너와 동일한 크기 */
+            max-width: 450px;
             width: 100%;
-            height: 600px; /* 키운 높이 */
-            margin: 10px; /* 컨테이너 사이의 간격 */
+            height: 600px;
             box-sizing: border-box;
-            overflow: hidden; /* 스크롤 제거 */
+        }
+
+        .container {
+            margin-right: 50px; /* 두 컨테이너 간격 확대 */
         }
 
         h1 {
@@ -186,6 +44,20 @@
             color: white;
             margin-bottom: 15px;
             line-height: 1.6;
+        }
+
+        .scrollable-container p {
+            font-size: 0.9rem; /* 오른쪽 컨테이너 글씨 크기 축소 */
+            line-height: 1.4;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
         }
 
         .button-group {
@@ -246,20 +118,20 @@
         <p class="footer">* 최소 6시간 수면 또는 최적의 REM 수면을 추천합니다.</p>
     </div>
 
-    <div class="container">
+    <div class="scrollable-container">
         <h1>수면 전 체크리스트</h1>
         <p>수면전 하면 안되는 것들의 정보가 여기에 표시됩니다. 사용자는 다음 정보를 토대로 건강한 생활습관을 형성할 수 있습니다.</p>
         <p>1. 카페인 섭취</p>
         <p>카페인은 아데노신 수용체를 차단하여 각성 상태를 유도하며, 수면 잠복기를 증가시키고 수면 유지에 부정적인 영향을 미칩니다.</p>
-        <p>2. 니코틴 섭취:</p>
+        <p>2. 니코틴 섭취</p>
         <p>니코틴은 중추신경계를 자극하여 심박수와 혈압을 상승시키고, 수면 잠복기를 연장하며 수면의 질을 저하합니다.</p>
-        <p>3. 알코올 섭취:</p>
+        <p>3. 알코올 섭취</p>
         <p>알코올은 수면 개시를 촉진하지만, 수면 후반기 동안 REM 수면 억제 및 중단을 초래하여 수면의 질을 저하시킵니다.</p>
-        <p>4. 전자기기 사용:</p> 
+        <p>4. 전자기기 사용</p>
         <p>스마트폰과 태블릿 등에서 발생하는 블루라이트는 멜라토닌 분비를 억제하고 생체 리듬(서카디언 리듬)에 혼란을 초래합니다.</p>
-        <p>5. 설탕 섭취:</p> 
+        <p>5. 설탕 섭취</p>
         <p>설탕 섭취는 혈당 변동을 초래하여 잠들기 전 과도한 에너지 분출 및 수면 지속의 어려움을 유발합니다.</p>
-        <p>6. 불규칙한 수면 일정:</p>
+        <p>6. 불규칙한 수면 일정</p>
         <p>일정하지 않은 취침 및 기상 시간은 생체 리듬(서카디언 리듬)을 혼란시켜 수면의 질을 저하시킵니다.</p>
     </div>
 </body>
