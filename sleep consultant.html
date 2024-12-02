@@ -117,6 +117,27 @@
             color: white;
             margin: 10px 0;
         }
+         /* 기존 버튼 스타일 */
+    button {
+        background-color: #1f5b84;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        border: none;
+    }
+    button:hover {
+        background-color: #1a4a6f;
+        transform: translateY(-2px);
+    }
+
+    /* 수면시간 최소화 버튼만 빨간색으로 변경 */
+    #calculateOptimized {
+        background-color: #e74c3c; /* 빨간색 */
+    }
+
+    #calculateOptimized:hover {
+        background-color: #c0392b; /* 더 어두운 빨간색 */
+    }
     </style>
 </head>
 <body>
