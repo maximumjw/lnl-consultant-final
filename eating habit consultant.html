@@ -13,37 +13,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: white;
+            background-color: white; /* 밝은 배경 */
         }
 
         .image-box {
             position: relative;
-            width: 75%;
+            width: 75%; /* 3:1 비율로 이미지 박스의 크기 */
             height: 90%;
-            background: url('isolated tree.jpg') no-repeat center center;
-            background-size: contain;
+            background: url('isolated tree.jpg') no-repeat center center; /* 나무 이미지를 배경으로 */
+            background-size: contain; /* 나무 이미지를 박스 크기에 맞게 */
             align-self: flex-end;
         }
 
         .fruit-button {
             position: absolute;
-            width: 80px;
+            width: 80px; /* 열매 크기 증가 */
             height: 80px;
-            background-size: cover;
+            background-size: cover; /* 이미지가 버튼을 채우도록 */
             background-position: center;
             border: none;
-            border-radius: 50%;
+            border-radius: 50%; /* 원형 유지 */
             text-align: center;
-            color: white;
+            color: white; /* 텍스트 색상 */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1rem;
+            font-size: 1rem; /* 텍스트 크기 조정 */
             font-weight: bold;
             cursor: pointer;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* 텍스트 가독성 향상 */
             transition: transform 0.3s, box-shadow 0.3s;
-            white-space: nowrap;
+            white-space: nowrap; /* 텍스트를 한 줄로 유지 */
         }
 
         .fruit-button:hover {
@@ -52,33 +52,33 @@
         }
 
         /* 열매 위치 설정 */
-        .fruit1 { top: 20%; left: 40%; background-color: red; }
-        .fruit2 { top: 25%; left: 50%; background-color: green; }
-        .fruit3 { top: 30%; left: 35%; background-color: orange; }
-        .fruit4 { top: 35%; left: 60%; background-color: blue; }
-        .fruit5 { top: 40%; left: 45%; background-color: purple; }
-        .fruit6 { top: 50%; left: 30%; background-color: cyan; }
+        .fruit1 { top: 20%; left: 40%; background-image: url('apple.png'); }
+        .fruit2 { top: 25%; left: 50%; background-image: url('apple.png'); }
+        .fruit3 { top: 30%; left: 35%; background-image: url('apple.png'); }
+        .fruit4 { top: 35%; left: 60%; background-image: url('apple.png'); }
+        .fruit5 { top: 40%; left: 45%; background-image: url('apple.png'); }
+        .fruit6 { top: 50%; left: 30%; background-image: url('apple.png'); }
 
         .info-box {
-            width: 20%;
-            height: 100%;
+            width: 20%; /* 텍스트 박스의 가로 길이 */
+            height: 100%; /* 세로 길이를 전체 화면 높이에 맞춤 */
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-left: auto;
+            margin-left: auto; /* 오른쪽으로 배치 */
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* 위아래로 나누기 */
             overflow: hidden;
         }
 
         .info-section {
-            flex: 1;
+            flex: 1; /* 위아래 비율을 동일하게 */
             padding: 20px;
             overflow-y: auto;
         }
 
         .info-section:nth-child(1) {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 구분선 */
         }
 
         .info-box h2 {
@@ -92,9 +92,37 @@
             font-size: 1rem;
             line-height: 1.6;
         }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #1f5b84;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #174d6e;
+            transform: translateY(-3px);
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
+    <a href="index.html" class="back-button">메인으로 돌아가기</a>
+
     <div class="container">
         <!-- 이미지 박스 -->
         <div class="image-box">
@@ -137,7 +165,7 @@
             },
             vitamin: {
                 info: '비타민은 신체 기능을 조절합니다.',
-                food: '케일(Vitamin K, A, C), 시금치(Vitamin A, C, K), 브로콜리(Vitamin C, K), 파프리카 (Vitamin C), 고추 (Vitamin C),아스파라거스 (Vitamin K, C), 콜리플라워 (Vitamin C, K)'
+                food: '오렌지, 딸기, 브로콜리, 당근.'
             },
             mineral: {
                 info: '무기질은 뼈와 치아를 형성합니다.',
