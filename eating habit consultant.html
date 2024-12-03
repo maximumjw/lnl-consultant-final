@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             background: url('isolated tree.jpg') no-repeat center center fixed;
-            background-size: cover; /* 화면에 꽉 차게 설정 */
+            background-size: cover;
             height: 100vh;
             overflow: hidden;
             display: flex;
@@ -20,42 +20,65 @@
 
         .tree-container {
             position: relative;
-            width: 100%;
-            max-width: 1200px;
+            width: 60%; /* 나무를 왼쪽으로 배치 */
             height: 100%;
+        }
+
+        .info-box {
+            width: 35%;
+            height: 90%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .info-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1f5b84;
+            text-align: center;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         .fruit-button {
             position: absolute;
-            width: 84px; /* 열매 크기 */
+            width: 84px; /* 이미지 크기 */
             height: 84px;
-            background-color: red; /* 열매 색상 */
-            color: white; /* 글자 색상 */
-            border-radius: 50%;
+            background-size: cover; /* 이미지가 버튼을 채우도록 */
+            background-position: center;
+            border: none;
+            border-radius: 50%; /* 원형 유지 */
+            text-align: center;
+            color: white; /* 텍스트 색상 */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1rem; /* 크기에 맞춰 글자 크기 조정 */
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* 텍스트 가독성 향상 */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        /* 호버 효과 */
         .fruit-button:hover {
-            transform: scale(1.2); /* 크기 확대 */
-            background-color: darkred; /* 색상 변경 */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+            transform: scale(1.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
-        /* 열매 위치 설정: 무작위 배열 */
-        .fruit1 { top: 15%; left: 40%; } /* 첫 번째 열매 */
-        .fruit2 { top: 20%; left: 60%; } /* 두 번째 열매 */
-        .fruit3 { top: 25%; left: 30%; } /* 세 번째 열매 */
-        .fruit4 { top: 30%; left: 50%; } /* 네 번째 열매 */
-        .fruit5 { top: 35%; left: 70%; } /* 다섯 번째 열매 */
-        .fruit6 { top: 40%; left: 20%; } /* 여섯 번째 열매 */
+        /* 열매 위치 설정 */
+        .fruit1 { top: 15%; left: 35%; background-image: url('apple.png'); }
+        .fruit2 { top: 20%; left: 55%; background-image: url('apple.png'); }
+        .fruit3 { top: 25%; left: 25%; background-image: url('apple.png'); }
+        .fruit4 { top: 30%; left: 50%; background-image: url('apple.png'); }
+        .fruit5 { top: 35%; left: 70%; background-image: url('apple.png'); }
+        .fruit6 { top: 40%; left: 20%; background-image: url('apple.png'); }
 
         .back-button {
             position: absolute;
@@ -76,20 +99,49 @@
             background-color: #174d6e;
             transform: translateY(-3px);
         }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
-    <!-- 메인 페이지로 돌아가는 버튼 -->
     <a href="index.html" class="back-button">메인으로 돌아가기</a>
 
-    <div class="tree-container">
-        <!-- 열매 -->
-        <a href="carbohydrate.html" class="fruit-button fruit1">탄수화물</a>
-        <a href="protein.html" class="fruit-button fruit2">단백질</a>
-        <a href="fat.html" class="fruit-button fruit3">지방</a>
-        <a href="vitamin.html" class="fruit-button fruit4">비타민</a>
-        <a href="mineral.html" class="fruit-button fruit5">무기질</a>
-        <a href="water.html" class="fruit-button fruit6">물</a>
+    <div class="container">
+        <!-- 나무 영역 -->
+        <div class="tree-container">
+            <button class="fruit-button fruit1" onclick="showInfo('carbohydrate')">탄수화물</button>
+            <button class="fruit-button fruit2" onclick="showInfo('protein')">단백질</button>
+            <button class="fruit-button fruit3" onclick="showInfo('fat')">지방</button>
+            <button class="fruit-button fruit4" onclick="showInfo('vitamin')">비타민</button>
+            <button class="fruit-button fruit5" onclick="showInfo('mineral')">무기질</button>
+            <button class="fruit-button fruit6" onclick="showInfo('water')">물</button>
+        </div>
+
+        <!-- 정보 표시 박스 -->
+        <div class="info-box">
+            <h2>영양소 정보</h2>
+            <p id="info-text">열매를 클릭하여 영양소 정보를 확인하세요.</p>
+        </div>
     </div>
+
+    <script>
+        const nutritionInfo = {
+            carbohydrate: '탄수화물이 풍부한 음식: 쌀, 감자, 고구마, 빵, 파스타.',
+            protein: '단백질이 풍부한 음식: 닭가슴살, 생선, 두부, 달걀, 콩.',
+            fat: '지방이 풍부한 음식: 아보카도, 견과류, 올리브 오일, 치즈.',
+            vitamin: '비타민이 풍부한 음식: 오렌지, 딸기, 브로콜리, 당근.',
+            mineral: '무기질이 풍부한 음식: 시금치, 바나나, 우유, 해산물.',
+            water: '물을 많이 포함한 음식: 오이, 수박, 셀러리, 레터스.'
+        };
+
+        function showInfo(type) {
+            const infoText = document.getElementById('info-text');
+            infoText.textContent = nutritionInfo[type] || '정보를 불러올 수 없습니다.';
+        }
+    </script>
 </body>
 </html>
