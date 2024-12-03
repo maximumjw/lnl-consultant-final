@@ -306,7 +306,7 @@
         </div>
     </section>
     <footer>
-        <p>&copy;2024 Well Being Consulting 학생자율세미나 | 서울대학교 LnL 시범사업 운영단 | sponsored by RedBull</p>
+        <p>&copy;2024 Well Being Consulting 학생자율세미나 | 서울대학교 LnL 시범사업 운영단</p>
     </footer>
     <script>
         class CardGroupScroll {
@@ -343,8 +343,8 @@
                         this.groups[0].classList.add('visible');
                         group.classList.remove('visible');
                     } else if (scrollY >= this.end) {
-                        this.groups.forEach((g) => g.classList.remove('visible'));
-                        this.groups[1].classList.add('visible'); // 두 번째 그룹 고정
+                        this.groups[this.groups.length - 1].classList.add('visible');
+                        group.classList.remove('visible');
 
                     } else if (scrollY >= s && scrollY < e) {
                         group.classList.add('visible');
