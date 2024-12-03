@@ -9,8 +9,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff; /* 배경을 흰색으로 설정 */
+            background: url('isolated tree.jpg') no-repeat center center fixed;
+            background-size: cover; /* 화면에 꽉 차게 설정 */
             height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,14 +20,9 @@
 
         .tree-container {
             position: relative;
-            width: 800px; /* 나무 이미지 크기에 맞게 조정 */
-            height: auto;
-        }
-
-        .tree-container img {
-            display: block;
             width: 100%;
-            height: auto;
+            max-width: 1200px;
+            height: 100%;
         }
 
         .fruit-button {
@@ -38,7 +35,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1rem;
+            font-size: 1rem; /* 크기에 맞춰 글자 크기 조정 */
             text-align: center;
             text-decoration: none;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -52,13 +49,13 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
         }
 
-        /* 열매 위치 설정 */
-        .fruit1 { top: 10%; left: 40%; } /* 첫 번째 열매 */
-        .fruit2 { top: 15%; left: 50%; } /* 두 번째 열매 */
-        .fruit3 { top: 20%; left: 30%; } /* 세 번째 열매 */
-        .fruit4 { top: 25%; left: 60%; } /* 네 번째 열매 */
-        .fruit5 { top: 30%; left: 20%; } /* 다섯 번째 열매 */
-        .fruit6 { top: 35%; left: 70%; } /* 여섯 번째 열매 */
+        /* 열매 위치 설정: 무작위 배열 */
+        .fruit1 { top: 15%; left: 40%; } /* 첫 번째 열매 */
+        .fruit2 { top: 20%; left: 60%; } /* 두 번째 열매 */
+        .fruit3 { top: 25%; left: 30%; } /* 세 번째 열매 */
+        .fruit4 { top: 30%; left: 50%; } /* 네 번째 열매 */
+        .fruit5 { top: 35%; left: 70%; } /* 다섯 번째 열매 */
+        .fruit6 { top: 40%; left: 20%; } /* 여섯 번째 열매 */
 
         .back-button {
             position: absolute;
@@ -86,9 +83,6 @@
     <a href="index.html" class="back-button">메인으로 돌아가기</a>
 
     <div class="tree-container">
-        <!-- 나무 이미지 -->
-        <img src="isolated tree.jpg" alt="Tree">
-
         <!-- 열매 -->
         <a href="carbohydrate.html" class="fruit-button fruit1">탄수화물</a>
         <a href="protein.html" class="fruit-button fruit2">단백질</a>
