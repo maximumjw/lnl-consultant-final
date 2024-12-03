@@ -14,18 +14,20 @@
             height: 100vh;
             overflow: hidden;
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* 나무와 정보 박스를 양쪽으로 배치 */
             align-items: center;
         }
 
         .tree-container {
             position: relative;
-            width: 60%; /* 나무를 왼쪽으로 배치 */
+            width: 50%; /* 나무와 열매를 왼쪽으로 배치 */
             height: 100%;
+            display: flex;
+            justify-content: flex-start; /* 나무를 왼쪽 정렬 */
         }
 
         .info-box {
-            width: 35%;
+            width: 40%;
             height: 90%;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
@@ -78,7 +80,7 @@
         .fruit3 { top: 25%; left: 25%; background-image: url('apple.png'); }
         .fruit4 { top: 30%; left: 50%; background-image: url('apple.png'); }
         .fruit5 { top: 35%; left: 70%; background-image: url('apple.png'); }
-        .fruit6 { top: 40%; left: 20%; background-image: url('apple.png'); }
+        .fruit6 { top: 40%; left: 10%; background-image: url('apple.png'); }
 
         .back-button {
             position: absolute;
