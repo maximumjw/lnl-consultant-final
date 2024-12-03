@@ -7,10 +7,12 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 20px;
             background: url('exercies.jpg') no-repeat center center fixed; /* 배경 이미지 추가 */
-            background-size: cover; /* 배경 이미지 크기 설정 */
+            background-size: cover; /* 배경 이미지가 화면에 맞게 조정되도록 설정 */
         }
 
         h1 {
@@ -23,7 +25,7 @@
 
         .container {
             position: relative;
-            width: 400px; /* 기존 너비 유지 */
+            width: 400px;
         }
 
         .muscle-image {
@@ -117,5 +119,31 @@
         <h2>근육 부위를 선택하세요</h2>
         <p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>
     </div>
+    <script>
+        const hotspots = document.querySelectorAll('.hotspot');
+        const descriptionBox = document.getElementById('descriptionBox');
+
+        const descriptions = {
+            back: "<h2>등</h2><p>등 운동 정보</p>",
+            triceps: "<h2>삼두근</h2><p>삼두근 운동 정보</p>",
+            hamstrings: "<h2>햄스트링</h2><p>햄스트링 운동 정보</p>",
+            calves: "<h2>종아리</h2><p>종아리 운동 정보</p>",
+            chest: "<h2>가슴</h2><p>가슴 운동 정보</p>",
+            biceps: "<h2>이두근</h2><p>이두근 운동 정보</p>",
+            shoulder: "<h2>어깨</h2><p>어깨 운동 정보</p>",
+            quads: "<h2>대퇴사두근</h2><p>대퇴사두근 운동 정보</p>",
+        };
+
+        hotspots.forEach(hotspot => {
+            const part = hotspot.classList[1];
+            hotspot.addEventListener('mouseenter', () => {
+                descriptionBox.innerHTML = descriptions[part] || "<h2>근육 부위를 선택하세요</h2><p>해당 부위에 대한 정보가 없습니다.</p>";
+            });
+
+            hotspot.addEventListener('mouseleave', () => {
+                descriptionBox.innerHTML = "<h2>근육 부위를 선택하세요</h2><p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>";
+            });
+        });
+    </script>
 </body>
 </html>
