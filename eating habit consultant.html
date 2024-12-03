@@ -18,10 +18,10 @@
 
         .image-box {
             position: relative;
-            width: 75%;
+            width: 75%; /* 3:1 비율로 이미지 박스의 크기 */
             height: 90%;
             background: url('isolated tree.jpg') no-repeat center center; /* 나무 이미지를 배경으로 */
-            background-size: contain; 
+            background-size: contain; /* 나무 이미지를 박스 크기에 맞게 */
             align-self: flex-end;
         }
 
@@ -60,19 +60,30 @@
         .fruit6 { top: 50%; left: 30%; background-image: url('apple.png'); }
 
         .info-box {
-            width: 20%; /* 텍스트 박스의 가로 길이를 줄임 */
+            width: 20%; /* 텍스트 박스의 가로 길이 */
             height: 100%; /* 세로 길이를 전체 화면 높이에 맞춤 */
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
-            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
             margin-left: auto; /* 오른쪽으로 배치 */
+            display: flex;
+            flex-direction: column; /* 위아래로 나누기 */
+            overflow: hidden;
+        }
+
+        .info-section {
+            flex: 1; /* 위아래 비율을 동일하게 */
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .info-section:nth-child(1) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 구분선 */
         }
 
         .info-box h2 {
             font-size: 1.6rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #1f5b84;
             text-align: center;
         }
@@ -80,7 +91,6 @@
         .info-box p {
             font-size: 1rem;
             line-height: 1.6;
-            margin-bottom: 10px;
         }
 
         .back-button {
@@ -126,24 +136,52 @@
 
         <!-- 정보 표시 박스 -->
         <div class="info-box">
-            <h2>영양소 정보</h2>
-            <p id="info-text">열매를 클릭하여 영양소 정보를 확인하세요.</p>
+            <!-- 영양소 정보 -->
+            <div class="info-section">
+                <h2>영양소 정보</h2>
+                <p id="info-text">열매를 클릭하여 영양소 정보를 확인하세요.</p>
+            </div>
+            <!-- 음식 추천 -->
+            <div class="info-section">
+                <h2>음식 추천</h2>
+                <p id="food-text">영양소를 클릭하면 음식을 추천받을 수 있습니다.</p>
+            </div>
         </div>
     </div>
 
     <script>
         const nutritionInfo = {
-            carbohydrate: '탄수화물이 풍부한 음식: 쌀, 감자, 고구마, 빵, 파스타.',
-            protein: '단백질이 풍부한 음식: 닭가슴살, 생선, 두부, 달걀, 콩.',
-            fat: '지방이 풍부한 음식: 아보카도, 견과류, 올리브 오일, 치즈.',
-            vitamin: '비타민이 풍부한 음식: 오렌지, 딸기, 브로콜리, 당근.',
-            mineral: '무기질이 풍부한 음식: 시금치, 바나나, 우유, 해산물.',
-            water: '물을 많이 포함한 음식: 오이, 수박, 셀러리, 레터스.'
+            carbohydrate: {
+                info: '탄수화물은 신체 에너지원입니다.',
+                food: '쌀, 감자, 고구마, 빵, 파스타.'
+            },
+            protein: {
+                info: '단백질은 근육과 조직을 형성합니다.',
+                food: '닭가슴살, 생선, 두부, 달걀, 콩.'
+            },
+            fat: {
+                info: '지방은 신체 에너지 저장소입니다.',
+                food: '아보카도, 견과류, 올리브 오일, 치즈.'
+            },
+            vitamin: {
+                info: '비타민은 신체 기능을 조절합니다.',
+                food: '오렌지, 딸기, 브로콜리, 당근.'
+            },
+            mineral: {
+                info: '무기질은 뼈와 치아를 형성합니다.',
+                food: '시금치, 바나나, 우유, 해산물.'
+            },
+            water: {
+                info: '물은 신체의 생명을 유지합니다.',
+                food: '오이, 수박, 셀러리, 레터스.'
+            }
         };
 
         function showInfo(type) {
             const infoText = document.getElementById('info-text');
-            infoText.textContent = nutritionInfo[type] || '정보를 불러올 수 없습니다.';
+            const foodText = document.getElementById('food-text');
+            infoText.textContent = nutritionInfo[type]?.info || '정보를 불러올 수 없습니다.';
+            foodText.textContent = nutritionInfo[type]?.food || '음식을 추천할 수 없습니다.';
         }
     </script>
 </body>
