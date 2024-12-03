@@ -322,7 +322,8 @@
             init() {
                 this.start = this.wrapper.offsetTop;
                 this.end = this.wrapper.offsetTop + this.wrapper.offsetHeight - innerHeight;
-                this.step = (this.end - this.start) / this.groups.length;
+                this.smoothScrollFactor = 1.5;
+                this.step = (this.end - this.start) / this.groups.length / this.smoothScrollFactor; 
 
                 this.groups.forEach((group, i) => {
                     if (i === 0) {
