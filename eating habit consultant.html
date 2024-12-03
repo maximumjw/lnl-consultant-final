@@ -30,15 +30,15 @@
 
         .fruit-button {
             position: absolute;
-            width: 56px; /* 30% 줄인 크기 */
-            height: 56px;
+            width: 84px; /* 50% 확대된 크기 */
+            height: 84px; /* 50% 확대된 크기 */
             background-color: red; /* 열매 색상 */
             color: white; /* 글자 색상 */
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 1rem; /* 크기에 맞춰 글자 크기 조정 */
             text-align: center;
             text-decoration: none;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -52,14 +52,33 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
         }
 
-        /* 열매 위치 설정 */
-        .fruit1 { top: 20%; left: 40%; } /* 첫 번째 열매 */
-        .fruit2 { top: 25%; left: 60%; } /* 두 번째 열매 */
-        .fruit3 { top: 40%; left: 50%; } /* 세 번째 열매 */
-        .fruit4 { top: 50%; left: 30%; } /* 네 번째 열매 */
-        .fruit5 { top: 35%; left: 70%; } /* 다섯 번째 열매 */
-        .fruit6 { top: 55%; left: 45%; } /* 여섯 번째 열매 */
+        /* 열매 위치 설정 (간격 50% 확대) */
+        .fruit1 { top: 15%; left: 35%; } /* 첫 번째 열매 */
+        .fruit2 { top: 20%; left: 65%; } /* 두 번째 열매 */
+        .fruit3 { top: 40%; left: 55%; } /* 세 번째 열매 */
+        .fruit4 { top: 50%; left: 25%; } /* 네 번째 열매 */
+        .fruit5 { top: 30%; left: 75%; } /* 다섯 번째 열매 */
+        .fruit6 { top: 65%; left: 50%; } /* 여섯 번째 열매 */
 
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1f5b84;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #174d6e;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
@@ -72,5 +91,8 @@
         <a href="mineral.html" class="fruit-button fruit5">무기질</a>
         <a href="water.html" class="fruit-button fruit6">물</a>
     </div>
+
+    <!-- 메인 페이지로 돌아가는 버튼 -->
+    <a href="index.html" class="back-button">메인으로 돌아가기</a>
 </body>
 </html>
