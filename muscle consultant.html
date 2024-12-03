@@ -7,27 +7,23 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            background: url('exercies.jpg') no-repeat center center fixed; /* 업로드된 이미지를 배경으로 설정 */
-            background-size: cover; /* 이미지가 화면에 꽉 차도록 설정 */
+            background: url('exercies.jpg') no-repeat center center fixed; /* 배경 이미지 추가 */
+            background-size: cover; /* 배경 이미지 크기 설정 */
         }
 
         h1 {
             text-align: center;
             font-size: 2.2rem;
-            color: #fff; /* 텍스트를 배경 위에서 더 잘 보이게 흰색으로 변경 */
+            color: #2c3e50;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .container {
             position: relative;
-            width: 400px;
+            width: 400px; /* 기존 너비 유지 */
         }
 
         .muscle-image {
@@ -61,7 +57,7 @@
             text-align: left;
             border: 1px solid #ddd;
             border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.9); /* 반투명 흰색 배경 추가 */
+            background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease-in-out;
         }
