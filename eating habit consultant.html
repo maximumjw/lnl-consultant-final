@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식습관 개선</title> 
+    <title>식습관 개선</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -101,13 +101,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            pointer-events: none;
         }
 
         .connection {
             stroke: rgba(255, 140, 0, 0.8);
             stroke-width: 8px;
-            fill: none;
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+            stroke-linecap: round;
         }
     </style>
 </head>
@@ -116,14 +116,14 @@
 
     <div class="tree-container">
         <div class="tree">
-            <!-- SVG로 곡선 연결 추가 -->
+            <!-- SVG로 직선 연결 -->
             <svg class="svg-container">
-                <path class="connection" d="M40% 20% C50% 5%, 70% 5%, 60% 10%" />
-                <path class="connection" d="M60% 10% C80% 20%, 80% 40%, 70% 30%" />
-                <path class="connection" d="M70% 30% C60% 40%, 55% 50%, 50% 50%" />
-                <path class="connection" d="M50% 50% C40% 60%, 35% 80%, 30% 70%" />
-                <path class="connection" d="M30% 70% C20% 60%, 5% 50%, 10% 60%" />
-                <path class="connection" d="M10% 60% C20% 40%, 30% 10%, 40% 20%" />
+                <line class="connection" x1="40%" y1="20%" x2="60%" y2="10%" />
+                <line class="connection" x1="60%" y1="10%" x2="70%" y2="30%" />
+                <line class="connection" x1="70%" y1="30%" x2="50%" y2="50%" />
+                <line class="connection" x1="50%" y1="50%" x2="30%" y2="70%" />
+                <line class="connection" x1="30%" y1="70%" x2="10%" y2="60%" />
+                <line class="connection" x1="10%" y1="60%" x2="40%" y2="20%" />
             </svg>
 
             <div class="button-container">
