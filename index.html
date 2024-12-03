@@ -9,7 +9,8 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background: url('snu.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #333;
             line-height: 1.6;
         }
@@ -267,105 +268,4 @@
                     <img src="https://maximumjw.github.io/lnl-consultant-final/card2.jpg" alt="Image 2">
                 </div>
                 <div class="card">
-                    <img src="https://maximumjw.github.io/lnl-consultant-final/card3.jpg" alt="Image 3">
-                </div>
-            </div>
-            <div class="card-frame">
-                <div class="card">
-                    <img src="https://maximumjw.github.io/lnl-consultant-final/card1.jpg" alt="Image 4">
-                </div>
-                <div class="card">
-                    <img src="https://maximumjw.github.io/lnl-consultant-final/card1.jpg" alt="Image 5">
-                </div>
-                <div class="card">
-                    <img src="https://maximumjw.github.io/lnl-consultant-final/card1.jpg" alt="Image 6">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="activities">
-            <div class="activity-card">
-                <h3>Sleep Habit<br>
-                    Improvement</h3>
-                <p>수면 주기 및 수면습관 최적화</p>
-                <a href="sleep consultant.html">더 알아보기</a>
-            </div>
-            <div class="activity-card">
-                <h3>Eating Habit<br>
-                    Improvement</h3>
-                <p>필수 영양소 추천 및 식습관 최적화</p>
-                <a href="eating habit consultant.html">더 알아보기</a>
-            </div>
-            <div class="activity-card">
-                <h3>Exercising Habit Improvement</h3>
-                <p>부위별 운동 추천 및 운동습관 최적화</p>
-                <a href="muscle consultant.html">더 알아보기</a>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <p>&copy;2024 Well Being Consulting 학생자율세미나 | 서울대학교 LnL 시범사업 운영단</p>
-    </footer>
-    <script>
-        class CardGroupScroll {
-            constructor(wrapper, sticky) {
-                this.wrapper = wrapper;
-                this.sticky = sticky;
-                this.groups = sticky.querySelectorAll('.card-frame');
-                this.start = 0;
-                this.end = 0;
-                this.step = 0;
-            }
-
-            init() {
-                this.start = this.wrapper.offsetTop;
-                this.end = this.wrapper.offsetTop + this.wrapper.offsetHeight - innerHeight;
-                this.smoothScrollFactor = 1.5;
-                this.step = (this.end - this.start) / this.groups.length / this.smoothScrollFactor; 
-
-                this.groups.forEach((group, i) => {
-                    if (i === 0) {
-                        group.classList.add('visible');
-                    } else {
-                        group.classList.remove('visible');
-                    }
-                });
-            }
-
-            animate() {
-                this.groups.forEach((group, i) => {
-                    const s = this.start + this.step * i;
-                    const e = s + this.step;
-
-                    if (scrollY < this.start) {
-                        this.groups[0].classList.add('visible');
-                        group.classList.remove('visible');
-                    } else if (scrollY >= this.end) {
-                        this.groups[this.groups.length - 1].classList.add('visible');
-                        group.classList.remove('visible');
-                    } else if (scrollY >= s && scrollY < e) {
-                        group.classList.add('visible');
-                    } else {
-                        group.classList.remove('visible');
-                    }
-                });
-            }
-        }
-
-        const mainContent1 = document.querySelector('.main-content-1');
-        const sticky = document.querySelector('.sticky');
-        const cardGroupScroll = new CardGroupScroll(mainContent1, sticky);
-        cardGroupScroll.init();
-
-        window.addEventListener('scroll', () => {
-            cardGroupScroll.animate();
-        });
-
-        window.addEventListener('resize', () => {
-            cardGroupScroll.init();
-        });
-    </script>
-</body>
-</html>
+                    <img src="https://
