@@ -3,109 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>분자 모형 시각화</title>
+    <title>식습관 개선</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: url('tree.jpg') no-repeat center center fixed;
+            background-size: cover;
             height: 100vh;
-            background-color: #f5f5f5;
-        }
-
-        .molecule-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-        }
-
-        .atom {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 12px;
-            color: white;
-            text-align: center;
         }
 
-        /* 원자 색상 */
-        .carbohydrate { background-color: orange; }
-        .protein { background-color: blue; }
-        .fat { background-color: green; }
-        .vitamin { background-color: red; }
-        .mineral { background-color: gray; }
-        .water { background-color: cyan; }
+        .tree-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-        /* 위치 설정 */
-        .atom1 { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* 중심 원자 */
-        .atom2 { top: 20%; left: 50%; transform: translate(-50%, -50%); } /* 탄수화물 */
-        .atom3 { top: 80%; left: 50%; transform: translate(-50%, -50%); } /* 단백질 */
-        .atom4 { top: 50%; left: 20%; transform: translate(-50%, -50%); } /* 지방 */
-        .atom5 { top: 50%; left: 80%; transform: translate(-50%, -50%); } /* 비타민 */
-        .atom6 { top: 20%; left: 80%; transform: translate(-50%, -50%); } /* 물 */
-
-        .connector {
+        .fruit-button {
             position: absolute;
-            width: 2px;
-            background-color: blue; /* 연결선 색상 */
-            transform-origin: top left;
+            width: 56px; /* 30% 줄인 크기 */
+            height: 56px;
+            background-color: red; /* 열매 색상 */
+            color: white; /* 글자 색상 */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
         }
 
-        /* 연결선 */
-        .connector1 {
-            top: 50%; left: 50%;
-            width: 150px;
-            transform: rotate(90deg) translateY(-50%);
+        /* 호버 효과 */
+        .fruit-button:hover {
+            transform: scale(1.2); /* 크기 확대 */
+            background-color: darkred; /* 색상 변경 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
         }
 
-        .connector2 {
-            top: 50%; left: 50%;
-            width: 150px;
-            transform: rotate(-90deg) translateY(-50%);
-        }
+        /* 열매 위치 설정 */
+        .fruit1 { top: 20%; left: 40%; } /* 첫 번째 열매 */
+        .fruit2 { top: 25%; left: 60%; } /* 두 번째 열매 */
+        .fruit3 { top: 40%; left: 50%; } /* 세 번째 열매 */
+        .fruit4 { top: 50%; left: 30%; } /* 네 번째 열매 */
+        .fruit5 { top: 35%; left: 70%; } /* 다섯 번째 열매 */
+        .fruit6 { top: 55%; left: 45%; } /* 여섯 번째 열매 */
 
-        .connector3 {
-            top: 50%; left: 50%;
-            width: 150px;
-            transform: rotate(180deg) translateY(-50%);
-        }
-
-        .connector4 {
-            top: 50%; left: 50%;
-            width: 150px;
-            transform: rotate(45deg) translateY(-50%);
-        }
-
-        .connector5 {
-            top: 50%; left: 20%;
-            width: 150px;
-            transform: rotate(45deg) translateY(-50%);
-        }
     </style>
 </head>
 <body>
-    <div class="molecule-container">
-        <!-- 원자 -->
-        <div class="atom carbohydrate atom2">탄수화물</div>
-        <div class="atom protein atom3">단백질</div>
-        <div class="atom fat atom4">지방</div>
-        <div class="atom vitamin atom5">비타민</div>
-        <div class="atom water atom6">물</div>
-
-        <!-- 연결선 -->
-        <div class="connector connector1"></div>
-        <div class="connector connector2"></div>
-        <div class="connector connector3"></div>
-        <div class="connector connector4"></div>
-        <div class="connector connector5"></div>
+    <div class="tree-container">
+        <!-- 열매 -->
+        <a href="carbohydrate.html" class="fruit-button fruit1">탄수화물</a>
+        <a href="protein.html" class="fruit-button fruit2">단백질</a>
+        <a href="fat.html" class="fruit-button fruit3">지방</a>
+        <a href="vitamin.html" class="fruit-button fruit4">비타민</a>
+        <a href="mineral.html" class="fruit-button fruit5">무기질</a>
+        <a href="water.html" class="fruit-button fruit6">물</a>
     </div>
 </body>
 </html>
