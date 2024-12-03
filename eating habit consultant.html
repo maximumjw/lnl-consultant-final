@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>식습관 개선</title>
+    <title>식습관 개선</title> 
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -95,6 +95,20 @@
         .fruit4 { top: 50%; left: 50%; }
         .fruit5 { top: 70%; left: 30%; }
         .fruit6 { top: 60%; left: 10%; }
+
+        /* SVG 스타일 */
+        .svg-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .connection {
+            stroke: rgba(255, 140, 0, 0.8);
+            stroke-width: 8px;
+            fill: none;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+        }
     </style>
 </head>
 <body>
@@ -102,6 +116,16 @@
 
     <div class="tree-container">
         <div class="tree">
+            <!-- SVG로 곡선 연결 추가 -->
+            <svg class="svg-container">
+                <path class="connection" d="M40% 20% C50% 5%, 70% 5%, 60% 10%" />
+                <path class="connection" d="M60% 10% C80% 20%, 80% 40%, 70% 30%" />
+                <path class="connection" d="M70% 30% C60% 40%, 55% 50%, 50% 50%" />
+                <path class="connection" d="M50% 50% C40% 60%, 35% 80%, 30% 70%" />
+                <path class="connection" d="M30% 70% C20% 60%, 5% 50%, 10% 60%" />
+                <path class="connection" d="M10% 60% C20% 40%, 30% 10%, 40% 20%" />
+            </svg>
+
             <div class="button-container">
                 <a href="carbohydrate.html" class="fruit-button fruit1">탄수화물</a>
                 <a href="protein.html" class="fruit-button fruit2">단백질</a>
