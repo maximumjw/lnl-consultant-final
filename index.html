@@ -15,14 +15,14 @@
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.8rem; /* 제목 글씨 크기 조정 */
             margin-bottom: 1.5rem;
         }
 
         header {
             background: linear-gradient(90deg, #00BFA5, #FF7043);
             color: white;
-            padding: 1rem 1rem;
+            padding: 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -30,16 +30,18 @@
 
         .logo-container img,
         .right-logo-container img {
-            width: 70px;
-            height: 70px;
+            width: 50px; /* 로고 크기 조정 */
+            height: 50px;
             object-fit: contain;
         }
 
         .title {
-            font-size: 2rem;
+            font-size: 1.5rem; /* 제목 크기 조정 */
             font-weight: bold;
             text-align: center;
             flex: 1;
+            margin: 0 1rem;
+            white-space: nowrap; /* 텍스트가 한 줄에 유지되도록 설정 */
         }
 
         nav {
@@ -54,27 +56,17 @@
             text-decoration: none;
             margin: 0 0.5rem;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* 글씨 크기 축소 */
         }
 
         section {
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
-        }
-
-        .gallery {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
         }
 
         .gallery img {
             width: 100%;
-            height: 100vh;
+            height: 80vh; /* 이미지 크기 조정 */
             object-fit: cover;
             scroll-snap-align: start;
         }
@@ -89,7 +81,7 @@
         }
 
         .service-card {
-            flex: 1 1 100%;
+            flex: 1 1 calc(33.333% - 20px);
             min-width: 300px;
             max-width: 100%;
             background-color: white;
@@ -107,29 +99,25 @@
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem; /* 서비스 제목 크기 조정 */
             margin-bottom: 10px;
             color: #00BFA5;
         }
 
         .service-card p {
-            font-size: 1rem;
+            font-size: 0.9rem; /* 서비스 설명 크기 조정 */
             color: #555;
         }
 
         .service-card a {
             display: inline-block;
             margin-top: 10px;
-            padding: 8px 12px;
+            padding: 6px 10px;
             color: white;
             background-color: #00BFA5;
             border-radius: 4px;
             text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .service-card a:hover {
-            background-color: #00897B;
+            font-size: 0.8rem; /* 버튼 크기 조정 */
         }
 
         footer {
@@ -138,6 +126,30 @@
             text-align: center;
             padding: 1rem;
             font-size: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .service-card {
+                flex: 1 1 calc(50% - 20px); /* 태블릿에서는 가로 2개 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-card {
+                flex: 1 1 100%; /* 모바일에서는 가로 1개 */
+            }
+
+            .title {
+                font-size: 1.2rem; /* 작은 화면에서 제목 크기 조정 */
+            }
+
+            nav a {
+                font-size: 0.7rem; /* 네비게이션 글씨 축소 */
+            }
         }
     </style>
 </head>
