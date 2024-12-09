@@ -15,51 +15,63 @@
         }
 
         h2 {
-            font-size: 1.8rem; /* 제목 글씨 크기 조정 */
+            font-size: 2rem; /* 제목 글씨 크기 */
             margin-bottom: 1.5rem;
         }
 
         header {
             background: linear-gradient(90deg, #00BFA5, #FF7043);
             color: white;
-            padding: 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 1rem 2rem;
+            position: relative;
         }
 
         .logo-container img,
         .right-logo-container img {
-            width: 50px; /* 로고 크기 조정 */
-            height: 50px;
+            width: 70px; /* 로고 크기 */
+            height: 70px;
             object-fit: contain;
         }
 
+        .logo-container {
+            position: absolute;
+            left: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .right-logo-container {
+            position: absolute;
+            right: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
         .title {
-            font-size: 1.8rem; /* 제목 크기 유지 */
+            font-size: 2rem; /* 제목 크기 */
             font-weight: bold;
             text-align: center;
-            flex: 1;
-            margin: 0 1rem;
+            margin: 0 auto;
             white-space: nowrap;
         }
 
         nav {
             background-color: #00BFA5;
             text-align: center;
-            padding: 0.5rem 0;
+            padding: 0.7rem 0;
             display: flex;
             justify-content: center;
-            gap: 1rem; /* 항목 간 간격 조정 */
-            flex-wrap: wrap; /* 작은 화면에서 줄바꿈 지원 */
+            gap: 2rem;
         }
 
         nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
-            padding: 0.3rem 0.6rem;
+            font-size: 1rem; /* 네비게이션 글씨 크기 */
             transition: color 0.3s ease;
         }
 
@@ -69,13 +81,23 @@
         }
 
         section {
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh; /* 화면에 꽉 차도록 설정 */
         }
 
         .gallery img {
             width: 100%;
-            height: 80vh;
+            height: 100vh;
             object-fit: cover;
             scroll-snap-align: start;
         }
@@ -92,7 +114,6 @@
         .service-card {
             flex: 1 1 calc(33.333% - 20px);
             min-width: 300px;
-            max-width: 100%;
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -143,31 +164,38 @@
                 font-size: 1.5rem; /* 제목 크기 축소 */
             }
 
-            nav a {
-                font-size: 0.9rem; /* 모바일에서 네비게이션 크기 축소 */
-                padding: 0.2rem 0.5rem;
+            nav {
+                flex-wrap: wrap; /* 네비게이션 줄바꿈 */
+                gap: 1rem;
             }
 
-            nav {
-                gap: 0.5rem; /* 작은 화면에서 간격 축소 */
+            nav a {
+                font-size: 0.9rem;
             }
 
             .service-card {
-                flex: 1 1 calc(50% - 20px); /* 태블릿에서 가로 2개 배치 */
+                flex: 1 1 calc(50% - 20px); /* 태블릿에서 가로 2개 */
+            }
+
+            .logo-container img,
+            .right-logo-container img {
+                width: 50px; /* 모바일에서 로고 크기 축소 */
+                height: 50px;
             }
         }
 
         @media (max-width: 480px) {
             nav {
-                flex-direction: column; /* 모바일에서 네비게이션 한 줄씩 표시 */
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 0.8rem; /* 네비게이션 크기 축소 */
             }
 
             .service-card {
-                flex: 1 1 100%; /* 모바일에서 가로 1개 배치 */
-            }
-
-            .title {
-                font-size: 1.6rem; /* 모바일에서 제목 크기 축소 */
+                flex: 1 1 100%; /* 모바일에서 가로 1개 */
             }
         }
     </style>
