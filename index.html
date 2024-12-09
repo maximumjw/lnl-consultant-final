@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Well-Being Consulting | Seoul National University LnL</title>
     <style>
-        /* 공통 스타일 */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -26,16 +25,11 @@
             text-align: center;
             padding: 1rem 1rem;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
         header .title {
             font-size: 2rem;
             font-weight: bold;
-            flex: 1;
-            text-align: center;
         }
 
         nav {
@@ -58,103 +52,25 @@
             text-align: center;
         }
 
-        .main-content-1 {
-            height: 300vh;
-            position: relative;
-            background-color: #fff;
-        }
-
-        .sticky {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff;
-        }
-
-        .sticky-title {
-            position: absolute;
-            top: 10px;
-            font-size: 2rem; /* 글씨 크기 통일 */
-            font-weight: bold;
-            color: #333;
-            z-index: 2;
-            text-align: center;
-            width: 100%;
-        }
-
-        .card-frame {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .card-frame.visible {
-            opacity: 1;
-        }
-
-        .card {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-        }
-
-        .activities {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 0 auto;
-            width: 90%;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
             max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .activity-card {
-            flex: 1 1 calc(33.333% - 20px); /* 가로 3개씩 */
-            max-width: calc(33.333% - 20px);
-            background-color: white;
-            border: 1px solid #ddd;
+        .gallery img {
+            width: 100%;
+            height: auto;
             border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .activity-card h3 {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            color: #00BFA5;
-        }
-
-        .activity-card p {
-            font-size: 0.8rem;
-            color: #555;
-        }
-
-        .activity-card a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 6px 10px;
-            color: white;
-            background-color: #00BFA5;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.8rem;
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         footer {
@@ -166,12 +82,12 @@
         }
 
         @media (max-width: 768px) {
-            .activity-card {
-                flex: 1 1 100%; /* 모바일에서 한 줄로 */
-            }
-
             h2 {
                 font-size: 1.5rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr; /* 모바일에서는 한 열로 */
             }
         }
     </style>
@@ -182,51 +98,25 @@
     </header>
     <nav>
         <a href="#about">Introduction</a>
-        <a href="#activities">Activities</a>
+        <a href="#activities">Gallery</a>
         <a href="#services">Services</a>
     </nav>
     <section id="about">
         <h2>Welcome to our Well Being Consulting</h2>
         <p>우리는 단순한 세미나를 넘어, 지속 가능한 웰빙 공동체를 만들어가는 작은 혁신가들입니다.</p>
     </section>
-    <section class="main-content-1">
-        <div class="sticky">
-            <div class="sticky-title">Our Activities</div>
-            <div class="card-frame visible">
-                <div class="card">
-                    <img src="https://maximumjw.github.io/lnl-consultant-final/card1.jpg" alt="Image 1">
-                </div>
-            </div>
-            <div class="card-frame">
-                <div class="card">
-                    <img src="https://maximumjw.github.io/lnl-consultant-final/card2.jpg" alt="Image 2">
-                </div>
-            </div>
-            <div class="card-frame">
-                <div class="card">
-                    <img src="https://maximumjw.github.io/lnl-consultant-final/card3.jpg" alt="Image 3">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="activities">
-            <div class="activity-card">
-                <h3>Sleep Habit<br>Improvement</h3>
-                <p>수면 주기 및 수면습관 최적화</p>
-                <a href="sleep consultant.html">더 알아보기</a>
-            </div>
-            <div class="activity-card">
-                <h3>Eating Habit<br>Improvement</h3>
-                <p>필수 영양소 추천 및 식습관 최적화</p>
-                <a href="eating habit consultant.html">더 알아보기</a>
-            </div>
-            <div class="activity-card">
-                <h3>Exercising Habit Improvement</h3>
-                <p>부위별 운동 추천 및 운동습관 최적화</p>
-                <a href="muscle consultant.html">더 알아보기</a>
-            </div>
+    <section id="activities">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card1.jpg" alt="Image 1">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card2.jpg" alt="Image 2">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card3.jpg" alt="Image 3">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card4.JPG" alt="Image 4">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card5.JPG" alt="Image 5">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card6.JPG" alt="Image 6">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card7.JPG" alt="Image 7">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card8.JPG" alt="Image 8">
+            <img src="https://maximumjw.github.io/lnl-consultant-final/card9.jpg" alt="Image 9">
         </div>
     </section>
     <footer>
