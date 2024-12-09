@@ -15,20 +15,31 @@
         }
 
         h2 {
-            font-size: 2rem; /* 글씨 크기 통일 */
+            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
 
         header {
             background: linear-gradient(90deg, #00BFA5, #FF7043);
             color: white;
-            text-align: center;
             padding: 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        header .title {
+        .logo-container img,
+        .right-logo-container img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .title {
             font-size: 2rem;
             font-weight: bold;
+            text-align: center;
+            flex: 1;
         }
 
         nav {
@@ -128,31 +139,34 @@
             padding: 1rem;
             font-size: 0.75rem;
         }
-
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .service-card {
-                flex: 1 1 100%;
-                max-width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
     <header>
+        <div class="logo-container">
+            <a href="https://www.snu.ac.kr/index.html">
+                <img src="snuimg.png" alt="Seoul National University Logo">
+            </a>
+        </div>
         <div class="title">Well Being Consulting</div>
+        <div class="right-logo-container">
+            <a href="https://lnl.snu.ac.kr/">
+                <img src="lnl_logo.png" alt="LnL Logo">
+            </a>
+        </div>
     </header>
     <nav>
         <a href="#about">Introduction</a>
         <a href="#gallery">Gallery</a>
         <a href="#services">Services</a>
+        <a href="https://www.instagram.com/snu_art_run/" target="_blank">Contact Us</a>
     </nav>
     <section id="about">
         <h2>Welcome to our Well Being Consulting</h2>
         <p>우리는 단순한 세미나를 넘어, 지속 가능한 웰빙 공동체를 만들어가는 작은 혁신가들입니다.</p>
+        <p>서울대학교 LnL의 열정 넘치는 학생들이 모여 탄생한 웰빙 컨설팅 세미나는 개인과 공동체의 건강한 변화를 이끄는 특별한 여정입니다.</p>
+        <p>이 여정은 작은 시작일지 모르지만, 우리의 열정과 노력이 점점 더 큰 변화를 이끌어 낼 것입니다.</p> 
+        <p>우리의 웰빙 컨설팅을 통해, 우리의 작은 도전이 여러분의 삶에도 긍정적인 변화를 가져오길 바랍니다.</p>
     </section>
     <section id="gallery" class="gallery">
         <img src="https://maximumjw.github.io/lnl-consultant-final/card1.jpg" alt="Image 1">
