@@ -106,14 +106,16 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            max-width: 1200px;
-            margin: 1.5rem auto 0; /* Our Services와 카드 사이 간격 조정 */
+            max-width: 1000px; /* 최대 가로 폭 조정 */
+            margin: 1.5rem auto 0;
             padding: 2rem 0;
+            justify-content: center; /* 카드 가운데 정렬 */
         }
 
         .service-card {
             flex: 1 1 calc(33.333% - 20px);
             min-width: 300px;
+            max-width: 300px; /* 카드 폭 고정 */
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 8px;
