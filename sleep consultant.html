@@ -10,32 +10,18 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
             background: url('sky.jpeg') no-repeat center center fixed;
             background-size: cover;
-        }
-
-        .container, .scrollable-container {
-            background: rgba(150, 150, 150, 0.9);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            max-width: 450px;
-            width: 100%;
-            height: 600px;
-            box-sizing: border-box;
-        }
-
-        .container {
-            margin-right: 150px;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .back-button {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             background-color: #1f5b84;
             color: white;
             padding: 10px 15px;
@@ -45,6 +31,7 @@
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 1000;
         }
 
         .back-button:hover {
@@ -52,24 +39,46 @@
             transform: translateY(-2px);
         }
 
+        .container {
+            background: rgba(150, 150, 150, 0.9);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            width: 90%;
+            box-sizing: border-box;
+            margin-top: 60px; /* 메인으로 돌아가기 버튼과 간격 확보 */
+        }
+
+        .scrollable-container {
+            background: rgba(150, 150, 150, 0.9);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            width: 90%;
+            height: 300px;
+            box-sizing: border-box;
+            overflow-y: auto; /* 스크롤 가능 */
+            margin-top: 20px;
+        }
+
         h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: white;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-align: center;
         }
-        h2{
-            text-align: center;
-        }
+
         label, p {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: white;
-            margin-bottom: 15px;
-            line-height: 1.6;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
         .scrollable-container p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.2;
             color: white;
         }
@@ -80,22 +89,24 @@
             margin-bottom: 15px;
             border-radius: 5px;
             border: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .button-group {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 10px;
             margin-top: 10px;
         }
 
         .button-group button {
-            width: 48%;
-            padding: 10px 0;
+            flex: 1;
+            padding: 8px;
             border-radius: 8px;
             border: none;
             background: #1f5b84;
             color: white;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
@@ -104,14 +115,15 @@
             background-color: #1a4a6f;
             transform: translateY(-2px);
         }
+
         #calculateOptimized {
-        background: #d9534f; /* 빨간색 계열 */
+            background: #d9534f; /* 빨간색 계열 */
         }
 
         #calculateOptimized:hover {
-        background-color: #c9302c; /* 더 어두운 빨간색 */
-        transform: translateY(-2px); /* 살짝 올라가는 효과 */
+            background-color: #c9302c; /* 더 어두운 빨간색 */
         }
+
         ul {
             list-style-type: none;
             padding: 0;
@@ -120,13 +132,13 @@
 
         li {
             margin: 5px 0;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: white;
         }
 
         .footer {
-            font-size: 0.9rem;
-            margin-top: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
             color: white;
             text-align: center;
         }
@@ -134,6 +146,7 @@
 </head>
 <body>
     <a href="index.html" class="back-button">메인으로 돌아가기</a> <!-- 메인으로 돌아가기 버튼 추가 -->
+    
     <div class="container">
         <h1>수면 패턴 컨설팅</h1>
         <p>기상 시간과 잠드는 데 걸리는 시간을 입력하세요:</p>
@@ -160,10 +173,11 @@
         <p>3. 알코올 섭취 금지</p>
         <p>알코올은 수면 개시를 촉진하지만, 수면 후반기 동안 REM 수면 억제 및 중단을 초래하여 수면의 질을 저하합니다.</p>
         <p>4. 전자기기 사용 금지</p>
-        <p>스마트폰과 태블릿 등 전가기기에서 발생하는 블루라이트는 멜라토닌 분비를 억제하고 생체 리듬에 혼란을 초래합니다.</p>
+        <p>스마트폰과 태블릿 등 전자기기에서 발생하는 블루라이트는 멜라토닌 분비를 억제하고 생체 리듬에 혼란을 초래합니다.</p>
         <p>5. 불규칙한 수면 일정 지양</p>
         <p>일정하지 않은 취침 및 기상 시간은 생체 리듬(서카디언 리듬)을 혼란시켜 수면의 질을 저하시킵니다.</p>
     </div>
+
     <script>
         const calculateSleepTimes = (minimumHours) => {
             const wakeTimeInput = document.getElementById('wakeTime').value;
