@@ -15,7 +15,7 @@
         }
 
         h2 {
-            font-size: 2rem; /* 제목 글씨 크기 */
+            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
 
@@ -31,7 +31,7 @@
 
         .logo-container img,
         .right-logo-container img {
-            width: 70px; /* 로고 크기 */
+            width: 70px;
             height: 70px;
             object-fit: contain;
         }
@@ -51,7 +51,7 @@
         }
 
         .title {
-            font-size: 1.6rem; /* 제목 크기 축소 */
+            font-size: 1.6rem;
             font-weight: bold;
             text-align: center;
             margin: 0 auto;
@@ -71,7 +71,7 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem; /* 네비게이션 글씨 크기 */
+            font-size: 1rem;
             transition: color 0.3s ease;
         }
 
@@ -92,7 +92,7 @@
             justify-content: center;
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
-            height: 100vh; /* 화면에 꽉 차도록 설정 */
+            height: 100vh;
         }
 
         .gallery img {
@@ -107,7 +107,7 @@
             flex-wrap: wrap;
             gap: 20px;
             max-width: 1200px;
-            margin: 2rem auto 0;
+            margin: 1.5rem auto 0; /* Our Services와 카드 사이 간격 조정 */
             padding: 2rem 0;
         }
 
@@ -158,14 +158,13 @@
             font-size: 0.75rem;
         }
 
-        /* 반응형 스타일 */
         @media (max-width: 768px) {
             h2 {
-                font-size: 1.5rem; /* 제목 크기 축소 */
+                font-size: 1.5rem;
             }
 
             nav {
-                flex-wrap: wrap; /* 네비게이션 줄바꿈 */
+                flex-wrap: wrap;
                 gap: 1rem;
             }
 
@@ -174,12 +173,12 @@
             }
 
             .service-card {
-                flex: 1 1 calc(50% - 20px); /* 태블릿에서 가로 2개 */
+                flex: 1 1 calc(50% - 20px);
             }
 
             .logo-container img,
             .right-logo-container img {
-                width: 50px; /* 모바일에서 로고 크기 축소 */
+                width: 50px;
                 height: 50px;
             }
         }
@@ -191,11 +190,11 @@
             }
 
             nav a {
-                font-size: 0.8rem; /* 네비게이션 크기 축소 */
+                font-size: 0.8rem;
             }
 
             .service-card {
-                flex: 1 1 100%; /* 모바일에서 가로 1개 */
+                flex: 1 1 100%;
             }
         }
     </style>
@@ -265,7 +264,6 @@
         <p>&copy; 2024 Well Being Consulting | 서울대학교 LnL 시범사업 운영단</p>
     </footer>
     <script>
-        // Smooth scrolling for navigation
         document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
