@@ -134,16 +134,21 @@
         }
 
         ul {
+            display: flex; /* 가로 배열 */
+            flex-wrap: wrap; /* 여러 줄로 감싸기 */
+            justify-content: center; /* 가운데 정렬 */
             padding: 0;
             list-style-type: none;
             margin-top: 10px;
-            text-align: center;
         }
 
         li {
-            margin: 5px 0;
+            margin: 5px 10px; /* 각 시간 간격 */
             font-size: 1rem;
             color: white;
+            background-color: rgba(30, 144, 255, 0.8); /* 시간 배경 색 */
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
         .footer {
@@ -168,7 +173,6 @@
             <label for="fallAsleepTime">잠드는 데 걸리는 시간 (분):</label>
             <select id="fallAsleepTime" required>
                 <option value="" disabled selected>선택</option>
-                <!-- 1부터 30까지의 숫자 생성 -->
                 <script>
                     for (let i = 1; i <= 30; i++) {
                         document.write(`<option value="${i}">${i}분</option>`);
