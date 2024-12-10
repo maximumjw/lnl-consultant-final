@@ -42,8 +42,8 @@
 
         .container {
             position: relative;
-            width: 40%; /* 인체 사진 크기 축소 */
-            max-width: 300px;
+            width: 30%; /* 신체 이미지 크기 더 축소 */
+            max-width: 250px;
             height: auto;
             display: flex;
             justify-content: center;
@@ -59,8 +59,8 @@
 
         .hotspot {
             position: absolute;
-            width: 16px; /* 점 크기 조정 */
-            height: 16px;
+            width: 14px; /* 점 크기 축소 */
+            height: 14px;
             background: rgba(30, 144, 255, 0.8);
             border-radius: 50%;
             cursor: pointer;
@@ -76,60 +76,67 @@
 
         .description-box {
             position: absolute;
-            bottom: 20px; /* 하단에 위치 */
+            bottom: 10px; /* 하단 위치 */
             left: 50%;
             transform: translateX(-50%);
             width: 90%; /* 가로로 화면을 채움 */
             max-width: 500px;
-            padding: 20px;
+            padding: 15px;
             text-align: left;
             border: 1px solid #ddd;
             border-radius: 10px;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px; /* 추가 여백으로 이미지와 겹치지 않도록 설정 */
+            transition: transform 0.2s ease-in-out;
         }
 
         .description-box h2 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem; /* 글씨 크기 축소 */
+            margin-bottom: 10px;
             color: #2c3e50;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .description-box p {
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 0.9rem; /* 글씨 크기 축소 */
+            line-height: 1.5;
             color: #34495e;
+        }
+
+        .description-box:hover {
+            transform: scale(1.03); /* 확대가 최대 프레임 안에서만 이루어지도록 제한 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
         @media (max-width: 768px) {
             .container {
-                width: 60%;
+                width: 50%;
             }
 
             .hotspot {
-                width: 14px; /* 점 크기 축소 */
-                height: 14px;
+                width: 12px; /* 점 크기 더 축소 */
+                height: 12px;
             }
 
             .description-box {
                 width: 95%;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .description-box h2 {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                width: 80%;
+                width: 70%;
             }
 
             .hotspot {
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
             }
 
             .description-box {
@@ -137,11 +144,11 @@
             }
 
             .description-box h2 {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             .description-box p {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
         }
     </style>
