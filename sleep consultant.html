@@ -50,19 +50,6 @@
             margin-top: 60px; /* 메인으로 돌아가기 버튼과 간격 확보 */
         }
 
-        .scrollable-container {
-            background: rgba(150, 150, 150, 0.9);
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            max-width: 450px;
-            width: 90%;
-            height: 300px;
-            box-sizing: border-box;
-            overflow-y: auto; /* 스크롤 가능 */
-            margin-top: 20px;
-        }
-
         h1 {
             font-size: 1.8rem;
             color: white;
@@ -91,7 +78,7 @@
             white-space: nowrap; /* 텍스트 한 줄 유지 */
         }
 
-        .form-group input {
+        .form-group select, .form-group input {
             flex: 2;
             padding: 10px;
             border-radius: 5px;
@@ -159,7 +146,7 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">메인으로 돌아가기</a> <!-- 메인으로 돌아가기 버튼 추가 -->
+    <a href="index.html" class="back-button">메인으로 돌아가기</a>
     
     <div class="container">
         <h1>수면 패턴 컨설팅</h1>
@@ -170,7 +157,10 @@
         </div>
         <div class="form-group">
             <label for="fallAsleepTime">잠드는 데 걸리는 시간 (분):</label>
-            <input type="number" id="fallAsleepTime" min="0" placeholder="예: 14">
+            <select id="fallAsleepTime" required>
+                <option value="" disabled selected>선택</option>
+                ${[...Array(30).keys()].map(i => `<option value="${i + 1}">${i + 1}분</option>`).join('')}
+            </select>
         </div>
         <div class="button-group">
             <button id="calculateMin6">6시간 이상 수면</button>
@@ -179,21 +169,6 @@
         <h2>추천 취침 시간:</h2>
         <ul id="sleepTimes"></ul>
         <p class="footer">* 최소 6시간 수면 또는 최적의 REM 수면을 추천합니다.</p>
-    </div>
-
-    <div class="scrollable-container">
-        <h1>수면 전 체크리스트</h1>
-        <p>사용자는 다음 정보를 토대로 건강한 생활습관을 형성할 수 있습니다.</p>
-        <p>1. 카페인 섭취 금지</p>
-        <p>카페인은 아데노신 수용체를 차단하여 각성 상태를 유도하며, 수면 잠복기를 증가시키고 수면 유지에 부정적인 영향을 미칩니다.</p>
-        <p>2. 니코틴 섭취 금지</p>
-        <p>니코틴은 중추신경계를 자극하여 심박수와 혈압을 상승시키며, 수면 잠복기를 증가시키고 수면의 질을 저하합니다.</p>
-        <p>3. 알코올 섭취 금지</p>
-        <p>알코올은 수면 개시를 촉진하지만, 수면 후반기 동안 REM 수면 억제 및 중단을 초래하여 수면의 질을 저하합니다.</p>
-        <p>4. 전자기기 사용 금지</p>
-        <p>스마트폰과 태블릿 등 전자기기에서 발생하는 블루라이트는 멜라토닌 분비를 억제하고 생체 리듬에 혼란을 초래합니다.</p>
-        <p>5. 불규칙한 수면 일정 지양</p>
-        <p>일정하지 않은 취침 및 기상 시간은 생체 리듬(서카디언 리듬)을 혼란시켜 수면의 질을 저하시킵니다.</p>
     </div>
 
     <script>
