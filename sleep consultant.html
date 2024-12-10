@@ -134,22 +134,22 @@
         }
 
         ul {
-            display: flex; /* 가로 배열 */
-            justify-content: space-evenly; /* 균등 정렬 */
+            display: flex; 
+            justify-content: space-evenly;
             padding: 0;
             list-style-type: none;
             margin-top: 10px;
-            flex-wrap: wrap; /* 한 줄 초과 시 줄바꿈 */
+            flex-wrap: wrap; 
         }
 
         li {
             margin: 5px;
-            font-size: 0.9rem; /* 글씨 크기 조정 */
+            font-size: 0.9rem;
             color: white;
             background-color: rgba(30, 144, 255, 0.8);
             padding: 5px 10px;
             border-radius: 5px;
-            white-space: nowrap; /* 시간 텍스트 한 줄 유지 */
+            white-space: nowrap;
         }
 
         .footer {
@@ -193,11 +193,16 @@
     <div class="scrollable-container">
         <h1>수면 전 체크리스트</h1>
         <p>사용자는 다음 정보를 토대로 건강한 생활습관을 형성할 수 있습니다.</p>
-        <p>1. 카페인 섭취 금지</p>
+        <p>1. <strong>카페인 섭취 금지</strong></p>
+        <p>카페인은 신경계를 자극하여 수면 잠복기를 연장합니다. 또한 깊은 수면 단계를 억제하여 수면의 질을 저하시킵니다. 특히 오후 2시 이후에는 카페인 섭취를 자제하는 것이 좋습니다.</p>
         <p>2. 니코틴 섭취 금지</p>
+        <p>니코틴은 중추신경계를 자극하여 심박수와 혈압을 상승시키며, 수면 잠복기를 증가시키고 수면의 질을 저하합니다.</p>
         <p>3. 알코올 섭취 금지</p>
+        <p>알코올은 수면 개시를 촉진하지만, 수면 후반기 동안 REM 수면 억제 및 중단을 초래하여 수면의 질을 저하합니다.</p>
         <p>4. 전자기기 사용 금지</p>
-        <p>5. 불규칙한 수면 일정 지양</p>
+        <p>스마트폰과 태블릿 등 전자기기에서 발생하는 블루라이트는 멜라토닌 분비를 억제하고 생체 리듬에 혼란을 초래합니다.</p>
+        <p>5. <strong>불규칙한 수면 일정 지양</strong></p>
+        <p>불규칙한 취침 및 기상 시간은 서카디언 리듬을 혼란시키며, 신체가 일정한 수면 패턴에 적응하지 못하게 만듭니다. 매일 동일한 시간에 잠들고 일어나는 것이 중요합니다.</p>
     </div>
 
     <script>
