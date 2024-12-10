@@ -14,7 +14,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
             overflow: hidden;
         }
@@ -42,11 +42,12 @@
 
         .container {
             position: relative;
-            width: 60%; /* 신체 이미지 크기 조정 */
+            width: 50%; /* 신체 이미지 크기 살짝 축소 */
             max-width: 400px;
             height: auto;
             display: flex;
             justify-content: center;
+            margin-top: 60px; /* "메인으로 돌아가기" 버튼과 간격 확보 */
         }
 
         .muscle-image {
@@ -58,7 +59,7 @@
 
         .hotspot {
             position: absolute;
-            width: 18px; /* 점 크기 축소 */
+            width: 18px; /* 점 크기 */
             height: 18px;
             background: rgba(30, 144, 255, 0.8);
             border-radius: 50%;
@@ -74,10 +75,9 @@
         }
 
         .description-box {
-            position: absolute;
-            bottom: 10px; /* 하단 중앙 배치 */
-            width: 90%; /* 가로로 화면을 채움 */
-            max-width: 500px;
+            margin-top: 10px;
+            width: 50%; /* 그림과 동일한 가로 크기 */
+            max-width: 400px;
             padding: 20px;
             text-align: left;
             border: 1px solid #ddd;
@@ -106,17 +106,16 @@
 
         @media (max-width: 768px) {
             .container {
-                width: 80%;
+                width: 70%;
             }
 
             .hotspot {
-                width: 14px; /* 점 크기 더 축소 */
+                width: 14px; /* 점 크기 축소 */
                 height: 14px;
             }
 
             .description-box {
-                width: 95%;
-                font-size: 0.9rem;
+                width: 70%;
             }
 
             .description-box h2 {
@@ -134,6 +133,10 @@
                 height: 12px;
             }
 
+            .description-box {
+                width: 90%;
+            }
+
             .description-box h2 {
                 font-size: 1.2rem;
             }
@@ -148,21 +151,20 @@
     <a href="index.html" class="back-button">메인으로 돌아가기</a>
     <div class="container">
         <img src="https://maximumjw.github.io/lnl-consultant-final/muscle.jpg" alt="근육 지도" class="muscle-image">
-        <div class="hotspot shoulder" style="top: 23%; left: 28%;"></div>
-        <div class="hotspot biceps" style="top: 30.7%; left: 26.8%;"></div>
-        <div class="hotspot triceps" style="top: 29.7%; left: 75.1%;"></div>
-        <div class="hotspot back" style="top: 32.8%; left: 63.2%;"></div>
-        <div class="hotspot chest" style="top: 27.0%; left: 38.8%;"></div>
-        <div class="hotspot quads" style="top: 57.1%; left: 32.8%;"></div>
-        <div class="hotspot hamstrings" style="top: 57.8%; left: 65.5%;"></div>
-        <div class="hotspot calves" style="top: 76.0%; left: 65.8%;"></div>
+        <div class="hotspot shoulder" style="top: 23%; left: 28%;" onclick="showInfo('shoulder')"></div>
+        <div class="hotspot biceps" style="top: 30.7%; left: 26.8%;" onclick="showInfo('biceps')"></div>
+        <div class="hotspot triceps" style="top: 29.7%; left: 75.1%;" onclick="showInfo('triceps')"></div>
+        <div class="hotspot back" style="top: 32.8%; left: 63.2%;" onclick="showInfo('back')"></div>
+        <div class="hotspot chest" style="top: 27.0%; left: 38.8%;" onclick="showInfo('chest')"></div>
+        <div class="hotspot quads" style="top: 57.1%; left: 32.8%;" onclick="showInfo('quads')"></div>
+        <div class="hotspot hamstrings" style="top: 57.8%; left: 65.5%;" onclick="showInfo('hamstrings')"></div>
+        <div class="hotspot calves" style="top: 76.0%; left: 65.8%;" onclick="showInfo('calves')"></div>
     </div>
     <div class="description-box" id="descriptionBox">
         <h2>근육 부위를 선택하세요</h2>
-        <p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>
+        <p>이미지 위의 파란색 원을 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>
     </div>
     <script>
-        const hotspots = document.querySelectorAll('.hotspot');
         const descriptionBox = document.getElementById('descriptionBox');
 
         const descriptions = {
@@ -217,20 +219,11 @@
             `,
         };
 
-        hotspots.forEach(hotspot => {
-            const part = hotspot.classList[1];
-            hotspot.addEventListener('mouseenter', () => {
-                descriptionBox.innerHTML = descriptions[part] || `
-                    <h2>근육 부위를 선택하세요</h2>
-                    <p>해당 부위에 대한 정보가 없습니다.</p>`;
-            });
-
-            hotspot.addEventListener('mouseleave', () => {
-                descriptionBox.innerHTML = `
-                    <h2>근육 부위를 선택하세요</h2>
-                    <p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>`;
-            });
-        });
+        function showInfo(part) {
+            descriptionBox.innerHTML = descriptions[part] || `
+                <h2>근육 부위를 선택하세요</h2>
+                <p>해당 부위에 대한 정보가 없습니다.</p>`;
+        }
     </script>
 </body>
 </html>
