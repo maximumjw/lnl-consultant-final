@@ -7,25 +7,46 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('exercies.jpg') no-repeat center center fixed; /* 배경 이미지 */
+            background-size: cover; /* 화면에 꽉 차도록 */
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            align-items: flex-start;
-            margin: 20px;
-            background: url('exercies.jpg') no-repeat center center fixed; /* 배경 이미지 추가 */
-            background-size: cover; /* 배경 이미지가 화면에 맞게 조정되도록 설정 */
+            height: 100vh;
+            overflow: hidden;
         }
 
-        h1 {
-            text-align: center;
-            font-size: 2.2rem;
-            color: #2c3e50;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
         }
 
         .container {
             position: relative;
-            width: 400px;
+            width: 60%; /* 신체 이미지 크기 조정 */
+            max-width: 400px;
+            height: auto;
+            display: flex;
+            justify-content: center;
         }
 
         .muscle-image {
@@ -37,8 +58,8 @@
 
         .hotspot {
             position: absolute;
-            width: 24px;
-            height: 24px;
+            width: 18px; /* 점 크기 축소 */
+            height: 18px;
             background: rgba(30, 144, 255, 0.8);
             border-radius: 50%;
             cursor: pointer;
@@ -53,8 +74,10 @@
         }
 
         .description-box {
-            margin-left: 40px;
-            width: 350px;
+            position: absolute;
+            bottom: 10px; /* 하단 중앙 배치 */
+            width: 90%; /* 가로로 화면을 채움 */
+            max-width: 500px;
             padding: 20px;
             text-align: left;
             border: 1px solid #ddd;
@@ -65,14 +88,14 @@
         }
 
         .description-box h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
             color: #2c3e50;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .description-box p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.6;
             color: #34495e;
         }
@@ -81,24 +104,43 @@
             transform: scale(1.02);
         }
 
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #3498db;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, transform 0.2s ease;
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+            }
+
+            .hotspot {
+                width: 14px; /* 점 크기 더 축소 */
+                height: 14px;
+            }
+
+            .description-box {
+                width: 95%;
+                font-size: 0.9rem;
+            }
+
+            .description-box h2 {
+                font-size: 1.4rem;
+            }
         }
 
-        .back-button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+
+            .hotspot {
+                width: 12px;
+                height: 12px;
+            }
+
+            .description-box h2 {
+                font-size: 1.2rem;
+            }
+
+            .description-box p {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -120,75 +162,75 @@
         <p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>
     </div>
     <script>
-    const hotspots = document.querySelectorAll('.hotspot');
-    const descriptionBox = document.getElementById('descriptionBox');
+        const hotspots = document.querySelectorAll('.hotspot');
+        const descriptionBox = document.getElementById('descriptionBox');
 
-    const descriptions = {
-        back: `
-            <h2>등</h2>
-            <p>1. 풀업: 광배근, 승모근, 이두근 강화. 초보자는 밴드 보조 풀업으로 시작하세요.</p>
-            <p>2. 바벨 로우: 상체를 숙이고 바를 몸쪽으로 당겨 등 근육 강화.</p>
-            <p>3. 랫 풀다운: 케이블 머신으로 다양한 자극을 줄 수 있는 운동.</p>
-            <p>4. 티바로우: 광배근, 승모근, 대원근을 자극합니다.</p>
-        `,
-        triceps: `
-            <h2>삼두근</h2>
-            <p>1. 클로즈 그립 벤치프레스: 가슴과 삼두근 강화.</p>
-            <p>2. 라잉 트라이셉스 익스텐션: 삼두근에 집중된 운동.</p>
-            <p>3. 케이블 푸쉬 다운: 케이블 머신을 이용한 삼두 운동.</p>
-            <p>4. 딥스: 평행봉을 이용한 체중 운동.</p>
-        `,
-        hamstrings: `
-            <h2>햄스트링</h2>
-            <p>1. 루마니안 데드리프트: 햄스트링과 둔근 강화.</p>
-            <p>2. 레그 컬: 무릎을 구부려 햄스트링 발달.</p>
-            <p>3. 힙 쓰러스트: 둔근과 햄스트링에 강한 자극.</p>
-        `,
-        calves: `
-            <h2>종아리</h2>
-            <p>1. 스탠딩 카프 레이즈: 체중을 활용한 종아리 운동.</p>
-            <p>2. 시티드 카프 레이즈: 앉아서 수행하는 종아리 운동.</p>
-        `,
-        chest: `
-            <h2>가슴</h2>
-            <p>1. 푸시업: 가슴뿐만 아니라 어깨와 삼두근도 발달.</p>
-            <p>2. 벤치 프레스: 대흉근 강화.</p>
-            <p>3. 덤벨 플라이: 가슴 근육을 스트레칭하며 발달.</p>
-            <p>4. 인클라인 벤치 프레스: 가슴 윗부분 발달.</p>
-        `,
-        biceps: `
-            <h2>이두근</h2>
-            <p>1. 바벨 컬: 팔꿈치를 고정하고 바벨을 들어 올림.</p>
-            <p>2. 덤벨 컬: 각 손에 덤벨로 비대칭 방지 운동.</p>
-            <p>3. 프리쳐 컬: 이두근을 집중적으로 자극.</p>
-        `,
-        shoulder: `
-            <h2>어깨</h2>
-            <p>1. 오버헤드 프레스: 어깨 근육 고르게 발달.</p>
-            <p>2. 덤벨 숄더 프레스: 덤벨 사용 운동.</p>
-            <p>3. 리어 델트 플라이: 후면 어깨 강화.</p>
-        `,
-        quads: `
-            <h2>대퇴사두근</h2>
-            <p>1. 스쿼트: 하체와 대퇴사두근 강화.</p>
-            <p>2. 레그 프레스: 머신에서 발판을 밀어 대퇴사두근 강화.</p>
-        `,
-    };
+        const descriptions = {
+            back: `
+                <h2>등</h2>
+                <p>1. 풀업: 광배근, 승모근, 이두근 강화. 초보자는 밴드 보조 풀업으로 시작하세요.</p>
+                <p>2. 바벨 로우: 상체를 숙이고 바를 몸쪽으로 당겨 등 근육 강화.</p>
+                <p>3. 랫 풀다운: 케이블 머신으로 다양한 자극을 줄 수 있는 운동.</p>
+                <p>4. 티바로우: 광배근, 승모근, 대원근을 자극합니다.</p>
+            `,
+            triceps: `
+                <h2>삼두근</h2>
+                <p>1. 클로즈 그립 벤치프레스: 가슴과 삼두근 강화.</p>
+                <p>2. 라잉 트라이셉스 익스텐션: 삼두근에 집중된 운동.</p>
+                <p>3. 케이블 푸쉬 다운: 케이블 머신을 이용한 삼두 운동.</p>
+                <p>4. 딥스: 평행봉을 이용한 체중 운동.</p>
+            `,
+            hamstrings: `
+                <h2>햄스트링</h2>
+                <p>1. 루마니안 데드리프트: 햄스트링과 둔근 강화.</p>
+                <p>2. 레그 컬: 무릎을 구부려 햄스트링 발달.</p>
+                <p>3. 힙 쓰러스트: 둔근과 햄스트링에 강한 자극.</p>
+            `,
+            calves: `
+                <h2>종아리</h2>
+                <p>1. 스탠딩 카프 레이즈: 체중을 활용한 종아리 운동.</p>
+                <p>2. 시티드 카프 레이즈: 앉아서 수행하는 종아리 운동.</p>
+            `,
+            chest: `
+                <h2>가슴</h2>
+                <p>1. 푸시업: 가슴뿐만 아니라 어깨와 삼두근도 발달.</p>
+                <p>2. 벤치 프레스: 대흉근 강화.</p>
+                <p>3. 덤벨 플라이: 가슴 근육을 스트레칭하며 발달.</p>
+                <p>4. 인클라인 벤치 프레스: 가슴 윗부분 발달.</p>
+            `,
+            biceps: `
+                <h2>이두근</h2>
+                <p>1. 바벨 컬: 팔꿈치를 고정하고 바벨을 들어 올림.</p>
+                <p>2. 덤벨 컬: 각 손에 덤벨로 비대칭 방지 운동.</p>
+                <p>3. 프리쳐 컬: 이두근을 집중적으로 자극.</p>
+            `,
+            shoulder: `
+                <h2>어깨</h2>
+                <p>1. 오버헤드 프레스: 어깨 근육 고르게 발달.</p>
+                <p>2. 덤벨 숄더 프레스: 덤벨 사용 운동.</p>
+                <p>3. 리어 델트 플라이: 후면 어깨 강화.</p>
+            `,
+            quads: `
+                <h2>대퇴사두근</h2>
+                <p>1. 스쿼트: 하체와 대퇴사두근 강화.</p>
+                <p>2. 레그 프레스: 머신에서 발판을 밀어 대퇴사두근 강화.</p>
+            `,
+        };
 
-    hotspots.forEach(hotspot => {
-        const part = hotspot.classList[1];
-        hotspot.addEventListener('mouseenter', () => {
-            descriptionBox.innerHTML = descriptions[part] || `
-                <h2>근육 부위를 선택하세요</h2>
-                <p>해당 부위에 대한 정보가 없습니다.</p>`;
+        hotspots.forEach(hotspot => {
+            const part = hotspot.classList[1];
+            hotspot.addEventListener('mouseenter', () => {
+                descriptionBox.innerHTML = descriptions[part] || `
+                    <h2>근육 부위를 선택하세요</h2>
+                    <p>해당 부위에 대한 정보가 없습니다.</p>`;
+            });
+
+            hotspot.addEventListener('mouseleave', () => {
+                descriptionBox.innerHTML = `
+                    <h2>근육 부위를 선택하세요</h2>
+                    <p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>`;
+            });
         });
-
-        hotspot.addEventListener('mouseleave', () => {
-            descriptionBox.innerHTML = `
-                <h2>근육 부위를 선택하세요</h2>
-                <p>이미지 위의 파란색 원에 마우스를 올리거나 클릭하면 해당 근육 부위와 운동 방법이 여기에 표시됩니다.</p>`;
-        });
-    });
-</script>
+    </script>
 </body>
 </html>
