@@ -77,19 +77,27 @@
             line-height: 1.4;
         }
 
-        .scrollable-container p {
-            font-size: 0.85rem;
-            line-height: 1.2;
-            color: white;
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
         }
 
-        input {
-            width: 100%;
+        .form-group label {
+            flex: 1;
+            margin-right: 10px;
+            font-size: 0.9rem;
+            white-space: nowrap; /* 텍스트 한 줄 유지 */
+        }
+
+        .form-group input {
+            flex: 2;
             padding: 10px;
-            margin-bottom: 15px;
             border-radius: 5px;
             border: none;
             font-size: 0.9rem;
+            box-sizing: border-box;
         }
 
         .button-group {
@@ -125,15 +133,21 @@
         }
 
         ul {
-            list-style-type: none;
+            display: flex; /* 가로 정렬 */
+            flex-wrap: wrap; /* 요소가 가로로 넘치면 다음 줄로 이동 */
+            gap: 10px; /* 아이템 간격 */
             padding: 0;
-            text-align: center;
+            justify-content: center;
+            list-style-type: none;
+            margin: 10px 0 0;
         }
 
         li {
-            margin: 5px 0;
             font-size: 1rem;
             color: white;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
         .footer {
@@ -150,10 +164,14 @@
     <div class="container">
         <h1>수면 패턴 컨설팅</h1>
         <p>기상 시간과 잠드는 데 걸리는 시간을 입력하세요:</p>
-        <label for="wakeTime">기상 시간 (HH:MM):</label>
-        <input type="time" id="wakeTime" required>
-        <label for="fallAsleepTime">잠드는 데 걸리는 시간 (분):</label>
-        <input type="number" id="fallAsleepTime" min="0" placeholder="예: 14">
+        <div class="form-group">
+            <label for="wakeTime">기상 시간 (HH:MM):</label>
+            <input type="time" id="wakeTime" required>
+        </div>
+        <div class="form-group">
+            <label for="fallAsleepTime">잠드는 데 걸리는 시간 (분):</label>
+            <input type="number" id="fallAsleepTime" min="0" placeholder="예: 14">
+        </div>
         <div class="button-group">
             <button id="calculateMin6">6시간 이상 수면</button>
             <button id="calculateOptimized">수면시간 최소화</button>
